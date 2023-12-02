@@ -1,12 +1,8 @@
 // Divination spell
 // level 1, very weak damage, slow projectile, 2 mana cost
 // mostly copied off of frost bolt to use that spell's projectile/sounds
-// copied animation stuff from fire dart - why does frost bolt have weird casting animations
 
 {
-	// from fire dart
-	const ANIM_CAST 11
-
   const SOUND_CHARGE      	magic/lightprep.wav
   const SOUND_SHOOT      	magic/ice_strike.wav
 
@@ -38,27 +34,22 @@
    precache SOUND_SHOOT2
 }
 
-//from fire dart
-{ cast_start
-	setvard baseitem.canidle 0
-	callevent 1.65 start_spell_anim
+{  [override] cast_start
+	playviewanim ANIM_CAST
+	playowneranim	critical PLAYERANIM_PREPARE squatwalk1
+	playsound	game.sound.item game.sound.maxvol SOUND_CHARGE
 }
 
-// from fire dart
-{ start_spell_anim
-	callevent 2.5 bitem_set_can_idle
-	playviewanim 12
-}
-
-// from fire dart
 { [override] cast_toss	//If ranged
-	callevent	spell_casted
+	// doesn't seem to work here for some reason
+	// playviewanim ANIM_CAST
 	playowneranim	critical PLAYERANIM_CAST squatwalk1
+	callevent spell_casted
 }
 
 {  spell_casted	//PARAM1: "none"/"npc"/"world"   2: Attack end Position   3: Entity hit (if any)
 
-   svplaysound game.sound.item game.sound.maxvol SOUND_SHOOT
+	svplaysound game.sound.item game.sound.maxvol SOUND_SHOOT
 }
 
 { fake_precache
