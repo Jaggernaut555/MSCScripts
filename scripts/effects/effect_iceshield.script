@@ -32,11 +32,18 @@
 	effect glow $get(ent_me,id) (0,0,192) 72 local.effect.duration local.effect.duration
 	playsound game.sound.item game.sound.maxvol magic/heal_strike.wav
 
+	// TODO: This has got to be replaceable
+  local DAMAGE_PERCENT local.effect.damage
+  multiply DAMAGE_PERCENT 100
+  local DISPLAY_PERCENT (
+  strconc DISPLAY_PERCENT $int($math(subtract,100,DAMAGE_PERCENT))
+  stradd DISPLAY_PERCENT "%)"
+
 	if ( $get(ent_me,isplayer) )
 	{
 		hud.addstatusicon ent_me alpha_iceshield iceshield local.effect.duration
 		
-		gplayermessage ent_me "You are protected by a shield of ice."
+		gplayermessage ent_me "You are protected by a shield of ice." DISPLAY_PERCENT
 		bplayermessage ent_me "Ice shield" $int(local.effect.duration) "seconds remain."
 	}
 
@@ -56,16 +63,43 @@
 	callevent local.effect.duration effect_die
 }
 
-{ ext_refresh_ice_shield //<duration> <shielder> //If a smaller duration is supplied, it will ignore it and refresh the longer duration instead.
+{ ext_refresh_ice_shield //<duration> <shielder> <damage_reduction> //If a smaller duration is supplied, it will ignore it and refresh the longer duration instead.
 
 	local L_SHIELDER PARAM2
-	if ( PARAM1 > local.effect.duration ) setvard local.effect.duration PARAM1
+	local L_NEW_DURATION PARAM1
+	local L_NEW_DAMAGE PARAM3
+	
+	//if ( PARAM1 > local.effect.duration ) setvard local.effect.duration PARAM1
 	
 	local L_TIME_DIFF FX_END_TIME
-	setvard FX_END_TIME $math(add,game.time,local.effect.duration) //set new end time
-	local L_TIME_DIFF $math(subtract,FX_END_TIME,L_TIME_DIFF) //Get how many seconds were added
-	
+	local L_NEW_END_TIME $math(add,game.time,L_NEW_DURATION)
+	local L_TIME_DIFF $math(subtract,L_NEW_END_TIME,L_TIME_DIFF) //Get how many seconds were added
+
+	// do not override with shorter duration than time remaining
+  if ( L_TIME_DIFF <= 0 )
+	{
+		rplayermessage L_SHIELDER "You cannot override this ice shield with a shorter duration."
+		local EXIT_SUB 1
+	}
+	if !EXIT_SUB
+
+	setvard FX_END_TIME L_NEW_END_TIME
+  setvard local.effect.duration L_NEW_DURATION
+
+	if ( L_NEW_DAMAGE != local.effect.damage )
+	{
+		local IS_NEW_DAMAGE_MULTIPLIER 1
+	}
+	setvard local.effect.damage L_NEW_DAMAGE
+
+	local DAMAGE_PERCENT local.effect.damage
+	multiply DAMAGE_PERCENT 100
+	local DISPLAY_PERCENT (
+	strconc DISPLAY_PERCENT $int($math(subtract,100,DAMAGE_PERCENT))
+	stradd DISPLAY_PERCENT "%)"
+
 	//FX
+	hud.killstatusicon ent_me iceshield // remove old icon
 	hud.addstatusicon ent_me alpha_iceshield iceshield local.effect.duration //set ice shield icon
 	
 	effect glow $get(ent_me,id) (0,0,192) 72 local.effect.duration local.effect.duration
@@ -78,7 +112,7 @@
 	{
 		if ( $get(ent_me,isplayer) ) //If I am a player
 		{
-			gplayermessage ent_me $get(L_SHIELDER,name) "has protected you with a shield of ice." //Tell me that a player so graciously shielded me (and possibly increased my duration)
+			gplayermessage ent_me $get(L_SHIELDER,name) "has protected you with a shield of ice." DISPLAY_PERCENT //Tell me that a player so graciously shielded me (and possibly increased my duration)
 			bplayermessage ent_me "Added" $int(L_TIME_DIFF) "seconds to Ice Shield."
 			
 			local ADD_BONUS 1
@@ -92,11 +126,17 @@
 		local L_BONUS_MSG "for shielding "
 		stradd L_BONUS_MSG $get(ent_me,name)
 		
-		local L_DMGPOINT_ADD $math(multiply,$math(divide,L_TIME_DIFF,412),1000) // ( time_diff / 412 seconds ) * 1000
+		local L_DMGPOINT_ADD $math(multiply,$math(divide,L_TIME_DIFF,L_NEW_DURATION),1000) // ( time_diff / L_NEW_DURATION seconds ) * 1000
 		
 		callexternal L_SHIELDER ext_dmgpoint_bonus L_DMGPOINT_ADD L_BONUS_MSG //Add bonus soda to healer
-		
-		
+	}
+	else
+	{
+		if ( IS_NEW_DAMAGE_MULTIPLIER )
+		{
+			gplayermessage ent_me "You are protected by a shield of ice. " DISPLAY_PERCENT
+		}
+		bplayermessage ent_me "Added" $int(L_TIME_DIFF) "seconds to Ice Shield."
 	}
 }
 

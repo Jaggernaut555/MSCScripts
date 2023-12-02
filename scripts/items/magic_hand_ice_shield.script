@@ -8,8 +8,25 @@
 
 	const MELEE_ATK_DURATION 	0.65
 
-	const MANA_COST	50 //special internal handling
-	const ICESHIELD_FORMULA 	0.5 //50% damage reduction
+	// as much as I'd like to remove ice shield, it's kind of required
+	// nerf early ice shield instead
+	// starts at 25% -> 50%, 1% per ice level
+	// mana cost 25 -> 50, +1 per ice level
+	// duration 30s + 3s per concentration + 2s per ice level
+	const ICE_SKILL_LEVEL $get(ent_owner,skill.spellcasting.ice)
+  const MANA_COST_BASE 25
+  const MANA_COST_MIN	25
+  const MANA_COST_MAX	50
+
+	const CONCENTRATION_STAT $get(ent_owner,stat.concentration)
+
+	const BASE_DURATION 30
+	const CONCENTRATION_DURATION_SCALING 3
+	const ICE_SKILL_LEVEL_DURATION_SCALING 2
+
+  const ICESHIELD_MIN_TAKEDMG 	0.5
+  const ICESHIELD_MAX_TAKEDMG 	0.75
+  const ICESHIELD_TAKEDMG_SCALING		$get(ent_owner,skill.spellcasting.ice.ratio)
 
 	const SPELL_SCRIPT effects/effect_iceshield
 }
@@ -36,6 +53,13 @@
 	playviewanim ANIM_CAST
 	playowneranim critical PLAYERANIM_PREPARE squatwalk1
 
+	local MANA_COST MANA_COST_BASE
+  add MANA_COST ICE_SKILL_LEVEL
+  capvar MANA_COST MANA_COST_MIN MANA_COST_MAX
+
+	// remove
+	subtract MANA_COST 20
+
 	if ( $get(ent_owner,mp) < MANA_COST ) dplayermessage ent_owner "Insufficient mana."
 	if $get(ent_owner,mp) >= MANA_COST
 
@@ -49,8 +73,14 @@
 		local SPELL_TARGET $get(ent_owner,id)
 	}
 
-	local FINAL_DURATION 150
-	if ( $get(SPELL_TARGET,id) isnot $get(ent_owner,id) ) local FINAL_DURATION 412
+	local FINAL_DURATION BASE_DURATION
+	add FINAL_DURATION $math(multiply,CONCENTRATION_STAT,CONCENTRATION_DURATION_SCALING)
+	add FINAL_DURATION $math(multiply,ICE_SKILL_LEVEL,ICE_SKILL_LEVEL_DURATION_SCALING)
+
+	local ICESHIELD_DAMAGE ICESHIELD_MAX_TAKEDMG
+  subtract ICESHIELD_DAMAGE ICESHIELD_TAKEDMG_SCALING
+  capvar ICESHIELD_DAMAGE ICESHIELD_MIN_TAKEDMG ICESHIELD_MAX_TAKEDMG
+  const ICESHIELD_FORMULA ICESHIELD_DAMAGE
 
 	givemp $neg(MANA_COST)
 	callexternal ent_owner mana_drain //update mana on player hud readout, if using hud feedback
@@ -58,11 +88,11 @@
 	local ALREADY_SHIELDED $get(SPELL_TARGET,haseffect,effect_iceshield)
 	if ( ALREADY_SHIELDED ) //If target is already shielded, refresh their duration.
 	{
-		callexternal SPELL_TARGET ext_refresh_ice_shield FINAL_DURATION $get(ent_owner,id) //<duration> <shielder>
+		callexternal SPELL_TARGET ext_refresh_ice_shield FINAL_DURATION $get(ent_owner,id) ICESHIELD_DAMAGE //<duration> <shielder> <damage_reduction>
 	}
 	else
 	{
-		applyeffect SPELL_TARGET SPELL_SCRIPT $get(ent_owner,id) FINAL_DURATION ICESHIELD_FORMULA //<duration> <damage_reduction> <shielder>
+		applyeffect SPELL_TARGET SPELL_SCRIPT $get(ent_owner,id) FINAL_DURATION ICESHIELD_DAMAGE //<shielder> <duration> <damage_reduction>
 	}
 }
 
