@@ -22,6 +22,8 @@
   const HEAL_MAX	 	75	//old formula 10000
   const HEAL_MIN 		30	//old formula 5
   const HEAL_SKILL		$get(ent_owner,skill.spellcasting.divination.ratio)
+
+  const CONCENTRATION_RESIST_RATIO 0.25 // Significantly increase chance to have this spell interrupted
   
   const LOOP_SOUND		player/heartbeat_noloop.wav
   const LOOP_CHANNEL		const.sound.item 
@@ -179,27 +181,6 @@
 	callexternal $get(ent_owner,id) display_health
 }
 
-{ game_takedamage ////PARAM1=attacker  PARAM2=inflictor? PARAM3=dmg PARAM4=dmg_type - use return to alter incoming damage
-
-	if PARAM4 isnot target //dont cancel heal for target tracking damage
-	if PARAM3 > 0.01
-	setvard BITCH_SLAPPED 1
-	callevent spell_end
-}
-
-{ [override] spell_end
-
-	if ( BITCH_SLAPPED ) playermessage You cannot rejuvenate while being attacked!
-	if ( !BITCH_SLAPPED ) playermessage The spell's duration ends.
-	callevent end_spell
-	//playviewanim	ANIM_IDLE1
-}
-
 { fake_precache
 	svplaysound 0 0 SOUND_SHOOT
-}
-
-{ end_spell
-	//remove any cl effects here
-	deleteme
 }
