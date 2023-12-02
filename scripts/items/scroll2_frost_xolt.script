@@ -6,7 +6,7 @@
   const ANIM_PREFIX		evilbook
 
 
-  const SPELL_LEVEL_REQ		3
+  const SPELL_LEVEL_REQ		1
 
   setvar SPELL_TO_CREATE		magic_hand_frost_bolt
   const THIS_ITEM		scroll2_frost_xolt

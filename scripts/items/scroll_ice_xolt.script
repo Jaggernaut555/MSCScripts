@@ -9,7 +9,7 @@
 
    name 	a|Frost Bolt Tome
    desc 	The method to create a shard of ice is here
-   value	200
+   value	100
 }
 
 { game_learnspell_success

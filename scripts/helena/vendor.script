@@ -219,6 +219,8 @@ f//Random merchant
 	//	        |Store name|	|Item name|		|Quantity|		|cost%|			|Sell Ratio|	
 	addstoreitem	STORE_NAME	scroll_fire_dart	$rand(1,4)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll_lightning_weak	$rand(1,4)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	scroll_ice_xolt	$rand(1,4)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	scroll_holy_bolt	$rand(1,4)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll_glow		$rand(1,5)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll2_fire_dart	$rand(1,2)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll2_lightning_weak	$rand(0,1)		OVERCHARGE		SELL_RATIO
