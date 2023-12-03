@@ -34,9 +34,9 @@
 	if RESISTED_EFFECT < 1
 	//=== End Check Immunities
 
-	setvard game.effect.movespeed 50%
+	setvard game.effect.movespeed 70%
 	//setvard game.effect.canjump 0
-	setvard game.effect.anim.framerate 0.4
+	setvard game.effect.anim.framerate 0.6
 
 	local slowduration $randf(0.2,local.effect.duration)
 
