@@ -66,6 +66,8 @@
    callevent spell_spawn
    callevent setup_attack
    callevent setup_spell
+
+	 setvard IS_CASTING 0
 }
 
 { game_deploy
@@ -193,6 +195,8 @@
 
 //---------------------------
 { cast_start
+	setvard IS_CASTING 1
+	setvard baseitem.canidle 0
 
 	if ( ANIM_CAST isnot 'ANIM_CAST' ) playviewanim ANIM_CAST
 	playowneranim critical PLAYERANIM_PREPARE squatwalk1
@@ -208,11 +212,12 @@
 	
 	callevent spell_casted
 	playowneranim critical PLAYERANIM_CAST squatwalk1
-	//if ( ANIM_CAST isnot 'ANIM_CAST' ) playviewanim ANIM_CAST //TODO: Should be replaced with a var for casting.
+	if ( ANIM_CAST isnot 'ANIM_CAST' ) playviewanim ANIM_CAST //TODO: Should be replaced with a var for casting.
 }
 
 { cast_end
-
+	setvard IS_CASTING 0
+	callevent 2.5 set_idle
 	//playviewanim	ANIM_IDLE1
 }
 
@@ -226,6 +231,14 @@
 
 { spell_casted
 	callexternal ent_owner mana_drain
+}
+
+// After all casting animations are done we can return to idling
+// using IS_CASTING to not return to idle animation if immediately recasting
+{ set_idle
+	if ( !IS_CASTING ) {
+		callevent bitem_set_can_idle
+	}
 }
 
 { game_takedamage

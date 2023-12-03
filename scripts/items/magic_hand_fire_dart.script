@@ -1,6 +1,5 @@
 //Thothie changing RANGED_COF so holding button down actually does something
 {
-	const ANIM_CAST 11
 	const SOUND_CHARGE      	magic/fireball_powerup.wav
 	const SOUND_SHOOT      	magic/fireball_strike.wav
 
@@ -26,30 +25,6 @@
 
    name "Fire Dart"
    desc "A weak bolt of fire"
-}
-
-{ spell_casted	//PARAM1: "none"/"npc"/"world"   2: Attack end Position   3: Entity hit (if any)
-
-	//playviewanim  ANIM_FIRE
-	svplaysound game.sound.item game.sound.maxvol SOUND_SHOOT
-}
-
-{ cast_start
-
-	setvard baseitem.canidle 0
-	callevent 1.65 start_spell_anim
-}
-
-{ [override] cast_toss	//If ranged
-	
-	callevent	spell_casted
-	playowneranim	critical PLAYERANIM_CAST squatwalk1
-}
-
-{ start_spell_anim
-
-	callevent 2.5 bitem_set_can_idle
-	playviewanim 12
 }
 
 { fake_precache
