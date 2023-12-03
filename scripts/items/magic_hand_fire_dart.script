@@ -6,7 +6,7 @@
 	const RANGED_FORCE		1000
 	const RANGED_COF 		10;1	//uncharged spread; charged spread  (all in degrees)
 	const RANGED_ATK_DURATION 	1
-	const RANGED_PROJECTILE 	proj_fire_dart
+	const RANGED_PROJECTILE 	proj_fire_dart_spell
 	const RANGED_DMG_DELAY	0.5
 
 	setvar SPELL_SKILL_REQUIRED	0

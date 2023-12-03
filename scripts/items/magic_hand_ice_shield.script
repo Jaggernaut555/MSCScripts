@@ -92,6 +92,6 @@
 	}
 	else
 	{
-		applyeffect SPELL_TARGET SPELL_SCRIPT FINAL_DURATION $get(ent_owner,id) ICESHIELD_FORMULA //<duration> <shielder> <damage_reduction>
+		applyeffect SPELL_TARGET SPELL_SCRIPT FINAL_DURATION $get(ent_owner,id) ICESHIELD_DAMAGE //<duration> <shielder> <damage_reduction>
 	}
 }

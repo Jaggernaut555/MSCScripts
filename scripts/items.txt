@@ -805,6 +805,7 @@ scroll2_holy_bolt
 proj_holy_bolt
 magic_hand_holy_bolt
 proj_frost_bolt_spell
+proj_fire_dart_spell
 
 //do not edit below this line
 
