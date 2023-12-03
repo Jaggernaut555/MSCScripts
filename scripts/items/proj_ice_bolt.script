@@ -14,8 +14,8 @@
 	const PROJ_ANIM_IDLE		idle_icebolt
 	const PROJ_MOTIONBLUR 0
 
-	const PROJ_DAMAGE		50
-	const PROJ_AOE_RANGE		30
+	const PROJ_DAMAGE		75
+	const PROJ_AOE_RANGE		55
 	const PROJ_AOE_FALLOFF	0
 	const PROJ_STICK_DURATION	0  //Don't stick in enemies
 	const PROJ_COLLIDEHITBOX	32 
