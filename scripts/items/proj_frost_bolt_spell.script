@@ -1,3 +1,7 @@
+// Separating the player frost bolt from the enemy frost bolt
+// Could be combined into the same base
+// proj_ice_bolt causes 5-15 per tick DoT
+
 {
 	const MODEL_HANDS      	none
 	const MODEL_WORLD      	weapons/projectiles.mdl
@@ -14,8 +18,8 @@
 	const PROJ_ANIM_IDLE		idle_icebolt
 	const PROJ_MOTIONBLUR 0
 
-	const PROJ_DAMAGE		50
-	const PROJ_AOE_RANGE		30
+	const PROJ_DAMAGE		75
+	const PROJ_AOE_RANGE		55
 	const PROJ_AOE_FALLOFF	0
 	const PROJ_STICK_DURATION	0  //Don't stick in enemies
 	const PROJ_COLLIDEHITBOX	32 
@@ -60,5 +64,5 @@
 	multiply EFFECT_DURATION 0.5
 	if ( EFFECT_DURATION < 3 ) setvard EFFECT_DURATION 3
 
-	applyeffect ENT_HIT effects/dot_cold EFFECT_DURATION MY_OWNER $randf(5,15) spellcasting.ice
+	applyeffect ENT_HIT effects/dot_cold EFFECT_DURATION MY_OWNER 0 spellcasting.ice
 }
