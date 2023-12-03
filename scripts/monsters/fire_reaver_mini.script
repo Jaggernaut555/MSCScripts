@@ -187,7 +187,6 @@
 	multiply L_SLASH_DAMAGE 3.0
 
 	callevent npcatk_dodamage NPCATK_TARGET ATTACK_HITRANGE L_SLASH_DAMAGE SLASH_HITCHANCE
-	//applyeffect NPCATK_TARGET effects/effect_stun 3 1 1
 	setvard ANIM_ATTACK ANIM_SLASH
 }
 
@@ -222,7 +221,7 @@
 		}
 
 		if $get(PARAM2,relationship,ent_me) equals enemy
-		applyeffect PARAM2 effects/effect_burn 5.0 $get(ent_me,id) DOT_BURN
+		applyeffect PARAM2 effects/dot_fire 5.0 $get(ent_me,id) DOT_BURN
 
 	}
 	setvard PUSH_ATTACK 0

@@ -231,7 +231,7 @@
 		if ( PARAM1 )
 		{
 			playsound 0 10 SOUND_HEADBUTT
-			applyeffect NPCATK_TARGET effects/heavy_stun 5 1
+			applyeffect NPCATK_TARGET effects/debuff_stun 5 $get(ent_me,id)
 		}
 		if ( !PARAM1 ) playrandomsound 0 10 SOUND_SWIPEMISS1 SOUND_SWIPEMISS2
 		setvard ANIM_ATTACK ANIM_SWIPE
@@ -247,7 +247,7 @@
 		if $rand(1,100) < CHANCE_SHOCK
 		playsound 0 10 SOUND_BFIRE
 		effect glow ent_me (255,255,0) 64 1 1
-		applyeffect PARAM2 effects/effect_shock_dmg $rand(2,5) $get(ent_me,id) 10
+		applyeffect PARAM2 effects/dot_lightning $rand(2,5) $get(ent_me,id) 10
 	}
 
 	if ( PARAM1 )
@@ -308,7 +308,7 @@
 	if ( $cansee(enemy,128) )
 	{
 		callevent npcatk_dodamage $get(ent_lastseen,id) ATTACK_HITRANGE LEAP_DAMAGE ATTACK_HITCHANCE
-		if ( $rand(1,100) < LEAP_STUNCHANCE ) applyeffect $get(ent_lastseen,id) effects/effect_stun 5 1
+		if ( $rand(1,100) < LEAP_STUNCHANCE ) applyeffect $get(ent_lastseen,id) effects/debuff_stun 5 $get(ent_me,id)
 	}
 }
 
@@ -492,7 +492,7 @@
 	effect beam update CUR_BEAM_ID end_target CUR_TARGET 0
 	add CUR_BEAM 1
 
-	//applyeffect CUR_TARGET effects/effect_shock_dmg 3.0 $get(ent_me,id) DMG_SHOCK
+	//applyeffect CUR_TARGET effects/dot_lightning 3.0 $get(ent_me,id) DMG_SHOCK
 
 	if CUR_BEAM > $get_token_amt(BEAM_LIST)
 	setvard CUR_BEAM 0

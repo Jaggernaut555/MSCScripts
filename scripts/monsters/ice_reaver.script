@@ -101,8 +101,6 @@
 	hp 2000
 	roam 1
 	takedmg cold 0.0
-	takedmg ice 0.0
-	takedmg fire 0.5
 
 	if ( $lcase(game.map.name) equals the_wall )
 	{
@@ -235,7 +233,7 @@
 { beam_dodamage
 	if PARAM1
 	if $get(PARAM2,relationship,ent_me) equals enemy
-	applyeffect PARAM2 effects/effect_shock_dmg SHOCK_DURATION $get(ent_me,id) SHOCK_DAMAGE
+	applyeffect PARAM2 effects/dot_lightning SHOCK_DURATION $get(ent_me,id) SHOCK_DAMAGE
 }
 
 { reaver_beam_reposition
@@ -325,7 +323,7 @@
 	if ( STUN_ATTACK )
 	{
 		setvard STUN_ATTACK 0
-		if ( $rand(1,100) > SMASH_STUN_CHANCE ) applyeffect NPCATK_TARGET effects/heavy_stun 10 $get(ent_me,id)
+		if ( $rand(1,100) > SMASH_STUN_CHANCE ) applyeffect NPCATK_TARGET effects/debuff_stun 10 $get(ent_me,id)
 	}
 }
 

@@ -114,9 +114,8 @@
 	race demon
 	takedmg all 0.4
 	takedmg holy 1.5
-	takedmg fire 0.0
+	takedmg fire 1.5
 	takedmg cold 0.0
-	takedmg ice 0.0
 	takedmg poison 0.0
 	//ov 80
 	roam 1
@@ -150,7 +149,7 @@
 
 	//If enemy that hit me is close, he will be frozen
 	if $get(ent_laststruck,range) < MOVE_RANGE
-	applyeffect ent_laststruck effects/effect_frostbite_dmg 1 $get(ent_me,id) AMB_FROST_DAMAGE
+	applyeffect ent_laststruck effects/dot_cold 1 $get(ent_me,id) AMB_FROST_DAMAGE
 }
 
 { idle_sounds
@@ -174,7 +173,7 @@
 	{
 		if ( PARAM1 )
 		{
-			applyeffect ent_laststruckbyme effects/freeze_solid 10.0 $get(ent_me)
+			applyeffect ent_laststruckbyme effects/dot_cold_freeze 10.0 $get(ent_me)
 			local THROW_DIR $rand(1,2)
 			if ( THROW_DIR == 1 ) addvelocity PARAM2 $relvel(-100,50,30)
 			if ( THROW_DIR == 2 ) addvelocity PARAM2 $relvel(100,50,30)
@@ -185,7 +184,7 @@
 	{
 		if ( USE_SWIPE_SOUND )
 		{
-			applyeffectstack PARAM2 effects/effect_frost 4 $get(ent_me,id) FROST_DAMAGE
+			applyeffect PARAM2 effects/dot_cold 4 $get(ent_me,id) FROST_DAMAGE none
 			playsound 0 10 SOUND_SWIPEHIT
 		}
 	}

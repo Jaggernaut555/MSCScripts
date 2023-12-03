@@ -637,7 +637,7 @@ xdodamage	//<target|(src_origin)> <range|aoe|(dest_origin)|direct> <damage> <cth
 		//- If prefix begins with * - <prefix>_dodamage will be called on <inflictor> instead of <attacker>, sans the * (for weapons)
 		//= "nodecal"
 		//- Causes trace damage events not to decal walls (note that they still fire hitwall/game_hitworld when calling from an item/weapon script)
-hitmulti	//<target> <ratio> - multiplies hit chances by this ratio (for instilling to-hit penalties)
+hitmulti	//<target> <ratio> - multiplies hit chances by this ratio (for instilling to-hit penalties) (0 returns hitmulti to normal)
 torandomspawn   //<target> - moves to a random ms_player_spawn within 256 units, if any
 callclitemevent	//<item_id> <event_name> <params...> - calls event on item, only affects owner's client
 clearplayerhits //<monster> <player|all> - clears record of hits on monster (used to calculate xp) from a specific player or all
@@ -790,16 +790,26 @@ trade
 
 //common dmg types
 holy //all but undead/demon immune by default (also players with signfigant darkness contamination)
+holy_effect
 dark //damages everything, though some things are resistant
+dark_effect
 earth //rarely used, earth damage is blunt unless directly channeled
 cold
+cold_effect
 fire
+fire_effect
 lightning
+lightning_effect
 blunt
+blunt_effect
 slash
+slash_effect
 pierce
+pierce_effect
 poison
+poison_effect
 acid
+acid_effect
 siege
 training
 apostle
@@ -1056,8 +1066,9 @@ IMMUNE_MAGIC		//ratio, 1=immune >1=vulnerable <1=resistant
 IMMUNE_HOLY		//ratio, 1=immune >1=vulnerable <1=resistant (creatures are immune to holy by default, exceptions: race undead and race demon)
 
 //special, not affected by takedmg
-IMMUNE_STUN		//this one works 0-100%
+IMMUNE_STUN		//this one works 0-100 (0 = no resistance, 100 = full immunity)
 IMMUNE_PUSH		//this is either 1 or 0 (see newer method: nopush 0|1, and $get(<target>,nopush) )
+MSC_PUSH_RESIST	//0-1 (0 = full push immunity, 1 = no push resistance)
 
 IS_BLOODLESS		//setting 1 indicates mob is immune to vampyric effects
 
@@ -1084,7 +1095,7 @@ game_deploy			//called when item put in hands
 game_dodamage			//PARAM1=hit:0|1 PARAM2=ent_hit PARAM3=(start) PARAM4=(end) PARAM5=DmgType PARAM6=DmgAmt
 game_drop			//called when item dropped
 game_dynamically_created	//called whenever createnpc used (possibly createitem as well) - params in createnpc command are passed here
-game_fall			//called when item falls
+game_fall			//Called on an item when it begins to fall. Also called on a player when they hit the ground and take damage.
 game_heardsound			//PARAM1=type:combat|move|danger PARAM2=(origin) PARAM3=danger_radius
 game_heardtext			//PARAM1=text PARAM2=player_id (general catch for local speech)
 game_parry			//PARAM1=attacker PARAM2=dmg PARAM3=dmg_type PARAM4=Parry_Roll PARAM5=Attack_Roll
@@ -1195,14 +1206,11 @@ get_chance_ultra_rare	//<hp_req> - callevent get_chance 1 2 50 HP_REQ
 
 //common effects
 blind			//<duration>
-effect_burn		//<duration> <inflictor_id> [damage] [noglow_shell-0|1] [nolight-0|1] [xp_skill] //EFFECT_ID DOT_fire
-effect_defile		//<duration> <attacker> [dmg] [ratio] [skill] (increases damage from all sources, dark DOT, generally low but with prolonged duration) //EFFECT_ID DOT_defile
-effect_drunk		//<duration>
+dot_fire		//<duration> <inflictor_id> [damage] [xp_skill] //EFFECT_ID DOT_fire
+defile		//<duration> <attacker> [dmg] [ratio] [skill] (increases damage from all sources, dark DOT, generally low but with prolonged duration) //EFFECT_ID DOT_defile
+drunk		//<duration>
 effect_flames		//<duration> - fx only
-effect_freeze		//<duration> <???> - secondary djinn effect (defunct)
-effect_frost		//<duration> [inflictor_id] <dmg> [glow-0|1] [xp_skill] - (djinn_ice version - defunct)
-effect_frostbite	//<duration> [inflictor_id] (slows, no damage)
-effect_frostbite_dmg	//<duration> <inflictor_id> <dmg> [xp_skill]  (slows, generally half damage) //EFFECT_ID DOT_cold
+dot_cold	//<duration> <inflictor_id> <dmg> [xp_skill]  (slows, generally half damage) //EFFECT_ID DOT_cold
 effect_holy_dmg		//<duration> <inflictor_id> <dmg> [xp_skill]  //EFFECT_ID DOT_holy
 effect_iceshield	//<duration> <dmg_multiplier>
 effect_light		//<duration> <radius> <color>
@@ -1627,7 +1635,7 @@ callevent	//<delay> <event_name> OR <event_name> [params...]
 calleventloop   //<#_of_iterations> <event_name> - loop event_name X times. Progress of loop stored in game.script.iteration - loops can be embedded
 calleventtimed	//same as callevent <delay> <event_name>
 callexternal    //<target|players|all> <event_name> [params...] - calls script on another target
-clientevent	//<new|update|persists> <target|all> <script_file|script_idx> <event_name> [params...] - see client side scripting docs
+clientevent	//<new|update|persists|remove> <target|all> <script_file|script_idx> <event_name> [params...] - see client side scripting docs //"remove" stops the effect from persisting, but does not remove any active scripts.
 override	//{ [override] eventname - override's lower instances of same event, can cause issues when overriding a higher occurance
 exitevent	//Ends execution of commands in the current script event (less need for if !EXIT_SUB)
 breakloop	//terminates a calleventloop in progress

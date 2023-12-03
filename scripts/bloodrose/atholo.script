@@ -300,12 +300,12 @@
 	if PARAM1
 	if ( FIRE_ATTACK == 1 )
 	{
-	   	applyeffect PARAM2 effects/effect_burn FIRE_DURATION $get(ent_me,id) FIRE_DAMAGE
+	   	applyeffect PARAM2 effects/dot_fire FIRE_DURATION $get(ent_me,id) FIRE_DAMAGE 
 	}
 
 	if ( FIRE_ATTACK == 2 )
 	{
-	   	applyeffect PARAM2 effects/freeze_solid FREEZE_DURATION $get(ent_me,id) FREEZE_DAMAGE
+	   	applyeffect PARAM2 effects/dot_cold_freeze FREEZE_DURATION $get(ent_me,id) FREEZE_DAMAGE
 	}
 	setvard FIRE_ATTACK 0
 }

@@ -42,7 +42,7 @@
 	sethudsprite hand arrows
 	sethudsprite trade ITEM_NAME
 	sethand any
-	effect glow ent_me (0,255,0) 128 1 -1
+	effect glow ent_me (0,255,0) 128 100 100
 
 } //end projectile_spawn
 
@@ -65,5 +65,5 @@
 	multiply EFFECT_DURATION CONCENTRATION_DURATION_SCALING
 	add EFFECT_DURATION BASE_DURATION
 
-	applyeffect ENT_HIT effects/effect_poison EFFECT_DURATION MY_OWNER POISON_DAMAGE 0 spellcasting.affliction
+	applyeffect ENT_HIT effects/dot_poison EFFECT_DURATION MY_OWNER POISON_DAMAGE 0 spellcasting.affliction
 }

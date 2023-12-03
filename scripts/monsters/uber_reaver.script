@@ -246,13 +246,13 @@
 		if SWING_ATTACK
 		if ( SOUND_ATTACKHIT isnot unset )	playsound 0 10 SOUND_ATTACKHIT
 		addvelocity ent_laststruckbyme PUSH_VEL
-		if ( $rand(1,CHANCE_FREEZE) == 1 ) applyeffect PARAM2 effects/effect_frostbite_dmg 5 $get(ent_me,id) DMG_FROST
+		if ( $rand(1,CHANCE_FREEZE) == 1 ) applyeffect PARAM2 effects/dot_cold 5 $get(ent_me,id) DMG_FROST
 	}
 
 	if ( STUN_ATTACK )
 	{
 		setvard STUN_ATTACK 0
-		if ( $rand(1,100) > SMASH_STUN_CHANCE ) applyeffect PARAM2 effects/heavy_stun 10 $get(ent_me,id)
+		if ( $rand(1,100) > SMASH_STUN_CHANCE ) applyeffect PARAM2 effects/debuff_stun 10 $get(ent_me,id)
 	}
 	setvard SWING_ATTACK 0
 }
@@ -389,7 +389,7 @@
 	local MON_CENT game.monster.origin
 	vectoradd MON_CENT z 128
 	effect beam point LIGHTNING_SPRITE 250 MON_CENT CUR_ORG (254,254,254) 150 50 0.2
-	applyeffect CUR_PLAYER effects/effect_shock_dmg SHOCK_DURATION $get(ent_me,id) SHOCK_DAMAGE
+	applyeffect CUR_PLAYER effects/dot_lightning SHOCK_DURATION $get(ent_me,id) SHOCK_DAMAGE
 	effect screenfade CUR_PLAYER 3 1 (255,255,255) 255 fadein
 }
 

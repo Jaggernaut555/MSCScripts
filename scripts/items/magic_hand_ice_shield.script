@@ -4,9 +4,9 @@
 
 {
 	const NO_REGISTER 1
-	const SOUND_SHOOT      	magic/cast.wav
+	const SOUND_SHOOT magic/cast.wav
 
-	const MELEE_ATK_DURATION 	0.65
+	const MELEE_ATK_DURATION 0.65
 
 	// as much as I'd like to remove ice shield, it's kind of required
 	// nerf early ice shield instead
@@ -28,7 +28,7 @@
   const ICESHIELD_MAX_TAKEDMG 	0.75
   const ICESHIELD_TAKEDMG_SCALING		$get(ent_owner,skill.spellcasting.ice.ratio)
 
-	const SPELL_SCRIPT effects/effect_iceshield
+	const SPELL_SCRIPT effects/iceshield
 }
 
 #include items/magic_hand_base
@@ -85,17 +85,13 @@
 	givemp $neg(MANA_COST)
 	callexternal ent_owner mana_drain //update mana on player hud readout, if using hud feedback
 	
-	local ALREADY_SHIELDED $get(SPELL_TARGET,haseffect,effect_iceshield)
+	local ALREADY_SHIELDED $get(SPELL_TARGET,haseffect,iceshield)
 	if ( ALREADY_SHIELDED ) //If target is already shielded, refresh their duration.
 	{
 		callexternal SPELL_TARGET ext_refresh_ice_shield FINAL_DURATION $get(ent_owner,id) ICESHIELD_DAMAGE //<duration> <shielder> <damage_reduction>
 	}
 	else
 	{
-		applyeffect SPELL_TARGET SPELL_SCRIPT $get(ent_owner,id) FINAL_DURATION ICESHIELD_DAMAGE //<shielder> <duration> <damage_reduction>
+		applyeffect SPELL_TARGET SPELL_SCRIPT FINAL_DURATION $get(ent_owner,id) ICESHIELD_FORMULA //<duration> <shielder> <damage_reduction>
 	}
-}
-
-{ fake_precache
-	svplaysound 0 0 debris/bustglass2.wav //For effect_iceshield
 }
