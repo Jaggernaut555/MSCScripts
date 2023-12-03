@@ -526,7 +526,7 @@ repeatdelay 1.0
 	addstoreitem  STORE_NAME     axes_scythe		$rand(0,1)	90
 	addstoreitem  STORE_NAME     scroll2_glow		$rand(0,1)	100
 	addstoreitem  STORE_NAME     scroll_glow		$rand(0,1)	100
-	addstoreitem  STORE_NAME     scroll2_fire_dart	$rand(0,1)	120
+	addstoreitem  STORE_NAME     scroll_poison	$rand(0,1)	150
 	addstoreitem  STORE_NAME     sheath_spellbook	2		80
 
 	addstoreitem  STORE_NAME     skin_boar 0 150 1.5
