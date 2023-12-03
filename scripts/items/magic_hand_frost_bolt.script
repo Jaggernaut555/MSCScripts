@@ -9,7 +9,7 @@
   const RANGED_FORCE		600
   const RANGED_COF 		1	//uncharged spread; charged spread  (all in degrees)
   const RANGED_ATK_DURATION 	1
-  const RANGED_PROJECTILE 	proj_ice_bolt
+  const RANGED_PROJECTILE 	proj_frost_bolt_spell
   const RANGED_DMG_DELAY	0.25
 
   setvar SPELL_SKILL_REQUIRED	1
