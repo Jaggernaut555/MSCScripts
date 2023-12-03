@@ -79,6 +79,7 @@
 	setvard HOLY_DMG $get(ent_owner,skill.spellcasting.divination)
 
 	multiply HOLY_DMG 0.5
+	add HOLY_DMG 1 // slightly buff damage
 
 	//local TARGET_ORIGIN $get(TARGET_NPC,origin)
 	//cleffect light new TARGET_ORIGIN 128 (255,255,0) 10
