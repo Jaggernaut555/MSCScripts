@@ -66,7 +66,7 @@
    addstoreitem  STORE_NAME    scroll_rejuvenate	 1  		 200	0.1
    addstoreitem  STORE_NAME    scroll2_rejuvenate	 1		 800	0.1
    addstoreitem  STORE_NAME    sheath_spellbook		 $rand(1,2)	 100	0.1
-	 addstoreitem  STORE_NAME    scroll2_holy_bolt	 1		 0.1	0.1
+
 
    if( $rand(1,3) == 1 ) addstoreitem  STORE_NAME     health_spotion   	 $rand(1,4)          100
 }
