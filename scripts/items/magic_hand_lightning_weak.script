@@ -67,7 +67,7 @@
 
 { cast_damaged_other	// Ramp up damage
 
-	if $get(script.npc,alive)
+	//if $get(script.npc,alive) // maybe intentional? this seems to make damage ramp not reset if last enemy died
 	if( script.npc isnot PARAM1 ) setvard script.ramp 1	 // Hit new npc - reset damage ramp
 
 	local 		l.dmg		PARAM2
