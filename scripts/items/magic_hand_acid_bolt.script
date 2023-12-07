@@ -3,7 +3,7 @@
 //- So I figure we need more spells to help get people there
 
 {
-	const ANIM_CAST 11
+	const ANIM_CAST 13
 	//redo sounds
 	const SOUND_CHARGE      	bullchicken/bc_attack1.wav
 	const SOUND_SHOOT      	bullchicken/bc_attack3.wav //was a random with bullchicken/bc_attack2.wav - replaced for item limit
@@ -29,24 +29,6 @@
 
    name Acidic Bolt
    desc Fires a bolt of corrosive bile
-}
-
-{ cast_start
-
-	setvard baseitem.canidle 0
-	callevent $math(add,$math(add,RANGED_ATK_DURATION,RANGED_DMG_DELAY),0.75) start_spell_anim
-}
-
-{ [override] cast_toss	//If ranged
-	
-	callevent	spell_casted
-	playowneranim	critical PLAYERANIM_CAST squatwalk1
-}
-
-{ start_spell_anim
-
-	callevent 2 bitem_set_can_idle
-	playviewanim 13
 }
 
 { spell_casted	//PARAM1: "none"/"npc"/"world"   2: Attack end Position   3: Entity hit (if any)

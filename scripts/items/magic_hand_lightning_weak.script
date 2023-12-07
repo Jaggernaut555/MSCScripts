@@ -3,6 +3,7 @@
 
 //Thothie - changed so the lightning ramp limit increases with skill
 {
+	const ANIM_CAST 16
 	const SOUND_SHOOT      	magic/cast.wav
 
 	const MELEE_RANGE		500
@@ -14,7 +15,7 @@
 	const MELEE_DMG 25
 	const MELEE_DMG_RANGE 15
 	const MELEE_NOAUTOAIM 1
-	const MELEE_DMG_DELAY 0.4
+	const MELEE_DMG_DELAY 0.7
 	//-------------------------------------------------------
 
 	setvar SPELL_SKILL_REQUIRED	0

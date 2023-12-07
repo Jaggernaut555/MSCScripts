@@ -3,7 +3,7 @@
 	const SOUND_CHARGE      	magic/fireball_powerup.wav
 	const SOUND_SHOOT      	magic/fireball_strike.wav
 
-	const ANIM_CAST 11
+	const ANIM_CAST 13
 	const RANGED_FORCE		1000
 	const RANGED_COF 		10;1	//uncharged spread; charged spread  (all in degrees)
 	const RANGED_ATK_DURATION 	1
@@ -28,27 +28,9 @@
    desc 		Slows and damages multiple opponents
 }
 
-{ cast_start
-
-	setvard baseitem.canidle 0
-	callevent 1.45 start_spell_anim
-}
-
-{ [override] cast_toss	//If ranged
-	
-	callevent	spell_casted
-	playowneranim	critical PLAYERANIM_CAST squatwalk1
-}
-
 { spell_casted	//PARAM1: "none"/"npc"/"world"   2: Attack end Position   3: Entity hit (if any)
 
 	svplaysound game.sound.item game.sound.maxvol SOUND_SHOOT
-}
-
-{ start_spell_anim
-
-	callevent 2 bitem_set_can_idle
-	playviewanim 13
 }
 
 { fake_precache
