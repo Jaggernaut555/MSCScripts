@@ -6,7 +6,8 @@
   const MELEE_HITCHANCE 	100%
   const MELEE_ATK_DURATION 	1
 
-  setvar SPELL_SKILL_REQUIRED	5
+  // nerfed healing at low level, reduce spell skill required
+  setvar SPELL_SKILL_REQUIRED	1
   const SPELL_FIZZLE_TIME	25
   const SPELL_CAST_SUCCESS	95%
   const SPELL_PREPARE_TIME	2
@@ -19,16 +20,38 @@
   const EFFECT_MINDURATION 	10
   const EFFECT_DURATION_STAT	$get(ent_owner,stat.concentration.ratio)
   const EFFECT_DURATION_FORMULA $get_skill_ratio(EFFECT_DURATION_STAT,EFFECT_MINDURATION,EFFECT_MAXDURATION,inversed)
-  const HEAL_MAX	 	75	//old formula 10000
-  const HEAL_MIN 		30	//old formula 5
-  const HEAL_SKILL		$get(ent_owner,skill.spellcasting.divination.ratio)
+
+  const DIVINATION_SKILL $get(ent_owner,skill.spellcasting.divination)
+  const SPELLCASTING_SKILL $get(ent_owner,skill.spellcasting)
+
+  // Base healing
+  // (spellcasting * 3) + (divination * 2)
+  const HEAL_SPELLCASTING_SCALING 3
+  const HEAL_SPELLCASTING_SKILL $math(multiply,SPELLCASTING_SKILL,HEAL_SPELLCASTING_SCALING)
+  const HEAL_DIVINATION_SCALING 2
+  const HEAL_DIVINATION_SKILL		$math(multiply,DIVINATION_SKILL,HEAL_DIVINATION_SCALING)
+
+  // healing another person scales ((0.005 * spellcasting) * max hp) up to 10% of their hp
+  const HEAL_MAXHP_SCALING_PER 0.005
+  const HEAL_MAXHP_SCALING_MIN 0.005
+  const HEAL_MAXHP_SCALING_MAX 0.1
+  const SPELLCASTING_MAXHP_RATIO $math(multiply,$get(ent_owner,skill.spellcasting),HEAL_MAXHP_SCALING_PER)
+
+  // self-healing multiplier
+  const SELF_HEAL_MULTIPLIER 0.5
+
+  // Passive regen: (0.4 * spellcasting) + (0.1 * divination) per tick
+  const SPELLCASTING_REGEN_RATE 0.4
+  const DIVINATION_REGEN_RATE 0.1
+
+  const CONCENTRATION_RESIST_RATIO 0.25 // Significantly increase chance to have this spell interrupted
   
   const LOOP_SOUND		player/heartbeat_noloop.wav
   const LOOP_CHANNEL		const.sound.item 
   precache LOOP_SOUND
 
-  const SPELL_SCRIPT		effects/effect_rejuv2
-  precachefile 			SPELL_SCRIPT
+  //const SPELL_SCRIPT		effects/effect_rejuv2
+  //precachefile 			SPELL_SCRIPT
 }
 
 #include items/magic_hand_base
@@ -36,7 +59,7 @@
 {  spell_spawn
 
    name 		Rejuvination
-   desc 		Replenish yours or an ally's health over time
+   desc 		"Replenish yours or an ally's health."
 
    setvard FAN_LOOP 0
 
@@ -44,7 +67,6 @@
 }
 
 {  spell_casted	//PARAM1: "none"/"npc"/"world"   2: Attack end Position   3: Entity hit (if any)
-
 	local DEMON_ON $get(ent_owner,scriptvar,'DEMON_BLOOD')
 	if ( DEMON_ON )
 	{
@@ -57,9 +79,9 @@
 	local L_CASTER $get(ent_owner,id) 
 	local L_SPELL_TARGET $get(ent_owner,id)
 	
-	local L_HEAL_AMT $get(ent_owner,skill.spellcasting.divination)
-	add L_HEAL_AMT HEAL_MIN
-	
+  local L_HEAL_AMT HEAL_SPELLCASTING_SKILL
+	add L_HEAL_AMT HEAL_DIVINATION_SKILL
+
 	if( PARAM1 equals 'npc' )
 	{
 		if ( $get(ent_owner,relationship,PARAM3) equals 'ally' ) local L_SPELL_TARGET PARAM3
@@ -69,9 +91,13 @@
 
 	if ( L_CASTER isnot L_SPELL_TARGET )
 	{
-		local L_TEN_PERCENT $get(L_SPELL_TARGET,maxhp)
-		multiply L_TEN_PERCENT 0.1
-		add L_HEAL_AMT L_TEN_PERCENT
+		local MAXHP_SCALING_RATIO SPELLCASTING_MAXHP_RATIO
+		capvar MAXHP_SCALING_RATIO HEAL_MAXHP_SCALING_MIN HEAL_MAXHP_SCALING_MAX
+
+		local MAXHP_SCALING $get(SPELL_TARGET,maxhp)
+		multiply MAXHP_SCALING MAXHP_SCALING_RATIO
+		add L_HEAL_AMT MAXHP_SCALING
+
 		local L_HEAL_AMT $int(L_HEAL_AMT) // $int() now so rounding doesn't confuse when reporting damage points vs healed
 		
 		//give damage point if other player or critical npc
@@ -86,13 +112,12 @@
 	}
 	else
 	{
-		multiply L_HEAL_AMT 0.5
+		multiply L_HEAL_AMT SELF_HEAL_MULTIPLIER
 	}
 	////dbg HealAmt Final HEAL_AMT
 	
 	svplaysound game.sound.voice 10 SOUND_SHOOT
 
-	//applyeffect SPELL_TARGET SPELL_SCRIPT HEAL_AMT DIV_SKILL $get(ent_owner,id)
 	callevent heal_target L_SPELL_TARGET L_HEAL_AMT L_GAVE_DMG_POINTS
 	if ( L_SPELL_TARGET isnot L_CASTER ) callexternal SPELL_TARGET display_health
 }
@@ -153,7 +178,6 @@
 }
 
 { passive_regen
-
 	repeatdelay 0.5
 
 	if FAN_LOOP >= 1
@@ -161,7 +185,7 @@
 	add FAN_LOOP 1
 	if ( FAN_LOOP == 3 )
 	{
-        playsound LOOP_CHANNEL 10 LOOP_SOUND
+		playsound LOOP_CHANNEL 10 LOOP_SOUND
 		effect glow ent_owner (0,255,0) 64 0.5 0.5
 		setvard FAN_LOOP 1 
 	}
@@ -169,10 +193,14 @@
 	local MY_MAX_HEALTH $get(ent_owner,maxhp)
 	local MY_CUR_HEALTH $get(ent_owner,hp)
 
-	local MY_SKILL $get(ent_owner,skill.spellcasting.divination)
-	local MY_PASSIVE_RATE MY_SKILL
-	multiply MY_PASSIVE_RATE 0.1
-	add MY_PASSIVE_RATE 4
+	local SPELLCASTING_REGEN SPELLCASTING_SKILL
+	multiply SPELLCASTING_REGEN SPELLCASTING_REGEN_RATE
+
+	local DIVINATION_REGEN DIVINATION_SKILL
+	multiply DIVINATION_REGEN DIVINATION_REGEN_RATE
+
+	local MY_PASSIVE_RATE SPELLCASTING_REGEN
+	add MY_PASSIVE_RATE DIVINATION_REGEN
 
 	if ( MY_CUR_HEALTH < MY_MAX_HEALTH ) givehp MY_PASSIVE_RATE
 
