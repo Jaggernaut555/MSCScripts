@@ -1,0 +1,137 @@
+// Close range affliction spell
+// deals acid damage
+// fast casting speed resulting in high mana cost
+
+// Using IS_CASTING for custom animation handling
+
+{
+	const SOUND_SHOOT      	bullchicken/bc_acid1.wav
+
+	const MELEE_RANGE		100
+	const MELEE_HITCHANCE 	100%
+	const MELEE_ATK_DURATION 	0.25
+
+	//Only defining these because this magic does instant traceline damage
+	const MELEE_TYPE strike-land
+	const MELEE_DMG 25
+	const MELEE_DMG_RANGE 0
+	const MELEE_NOAUTOAIM 1
+	const MELEE_DMG_DELAY 0.15
+	//-------------------------------------------------------
+
+	setvar SPELL_SKILL_REQUIRED	4
+	const SPELL_FIZZLE_TIME	45
+	//const SPELL_CAST_SUCCESS	90%
+	//const SPELL_PREPARE_TIME	5
+	const SPELL_DAMAGE_TYPE acid_effect
+	const SPELL_ENERGYDRAIN 10
+	const SPELL_MPDRAIN 2
+	const SPELL_STAT spellcasting.affliction
+	const SPELL_SKILL_LEVEL $get(ent_owner,skill.spellcasting.affliction)
+	const DAMAGE_SCALING 0.25
+
+	const CL_SCRIPT items/magic_hand_acid_touch_cl
+	precachefile CL_SCRIPT
+
+	precache bullchicken/bc_acid1.wav
+}
+
+#include items/magic_hand_base
+
+{ spell_spawn
+
+	name "Acid Touch"
+	desc "A touch of acid, with zest"
+
+	setvard IS_CASTING 0
+}
+
+{ game_attack1_down
+	if ( IS_CASTING == 0 )
+	{
+		setvard IS_CASTING 1
+		setvard baseitem.canidle 0
+	}
+}
+
+{ game_-attack1
+	if ( IS_CASTING )
+	{
+		setvard IS_CASTING 0
+	}
+}
+
+// rapidly casting animation so need to handle animation differently
+{ [override] cast_start
+	// magic_hand_base lets you try to cast without enough mana
+	if ( $get(ent_owner,mp) < SPELL_MPDRAIN )
+	{
+		local EXIT_SUB 1
+	}
+	if !EXIT_SUB
+
+	playviewanim ANIM_CAST
+	playowneranim critical PLAYERANIM_PREPARE squatwalk1
+	svplaysound	game.sound.item 5 SOUND_SHOOT
+
+	setvard OWNER_ANG $get(ent_owner,angles)
+
+	if ( CL_IDX equals 'CL_IDX' )
+	{
+		clientevent new all CL_SCRIPT $get(ent_owner,index)
+		setvard CL_IDX game.script.last_sent_id
+	}
+	
+	local CLOUD_START $get(ent_owner,svbonepos,15)
+	//vectoradd CLOUD_START $relpos(OWNER_ANG,$vec(0,32,-30)) //a little in front of face (and now down, due to change in player model, I guess)
+	vectoradd CLOUD_START $relpos(OWNER_ANG,$vec(-5,10,-40)) //a little in front of face (and now down, due to change in player model, I guess)
+	local CLOUD_ANG OWNER_ANG
+
+	// $get(ent_owner,angles) seems to max out pitch at +30 to -30 instead of +90 to -90
+	vectorset CLOUD_ANG x $math(multiply,$neg($vec.pitch(OWNER_ANG)),3)
+	//vectorset CLOUD_ANG x $neg($vec.pitch(OWNER_ANG))
+	vectoradd CLOUD_START z 24
+	clientevent update all CL_IDX make_clouds CLOUD_START CLOUD_ANG
+}
+
+{ [override] cast_end
+	if ( IS_CASTING == 0 )
+	{
+		callevent 1.5 set_idle
+	}
+}
+
+{ spell_end
+	if ( CL_IDX isnot 'CL_IDX' )
+	{
+		clientevent update all CL_IDX end_fx
+	}
+}
+
+{ set_idle
+	if ( !IS_CASTING ) {
+		callevent bitem_set_can_idle
+	}
+}
+
+
+{ cast_damaged_other // PARAM1=entity damaged PARAM2=damage
+
+	const DAMAGE_DONE SPELL_SKILL_LEVEL
+	multiply DAMAGE_DONE DAMAGE_SCALING
+	add DAMAGE_DONE PARAM2
+
+	setdmg dmg DAMAGE_DONE
+
+	// first param opponent
+	// second param acid dot effect
+	// third param duration
+	// fourth param caster
+	// fifth param damage per hit
+	local DOT_BURN SPELL_SKILL_LEVEL
+	multiply DOT_BURN 0.25
+	// sixth param idk maybe the skill to level?
+
+	// dot_acid always does 150% enhanced, should be lowered or parameter
+	applyeffect PARAM1 effects/effect_acid_dmg 3.0 $get(ent_owner,id) DOT_BURN spellcasting.affliction
+}

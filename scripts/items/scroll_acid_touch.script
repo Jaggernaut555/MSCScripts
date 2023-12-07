@@ -1,0 +1,19 @@
+//Close range poison spell
+{
+  setvar SPELL_SCRIPT      	magic_hand_acid_touch
+}
+
+#include items/base_scroll
+
+{
+   eventname script_spawn
+
+   name 	a|Tome of Acid Touch
+   desc 	The method for enchanting your hands with acid
+   value	200
+}
+
+{ game_learnspell_success
+
+  playermessage You learn how to cast acid touch
+}

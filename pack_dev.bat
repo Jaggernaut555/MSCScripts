@@ -16,4 +16,4 @@ cd ../
 
 echo ====================== Compiling...
 scriptpack.exe -vef
-pause
+::pause
