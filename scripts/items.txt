@@ -802,6 +802,11 @@ crest_noweed
 swords_gb
 crest_sor
 
+//HOLY BOLT
+scroll_holy_bolt
+scroll2_holy_bolt
+proj_holy_bolt
+magic_hand_holy_bolt
 
 //do not edit below this line
 
