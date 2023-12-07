@@ -196,13 +196,13 @@
 	setvard baseitem.canidle 0
 
 	if ( ANIM_WINDUP isnot 'ANIM_WINDUP' ) playviewanim ANIM_WINDUP
+	else playviewanim ANIM_CAST
 
 	playowneranim critical PLAYERANIM_PREPARE squatwalk1
 	svplaysound	game.sound.item game.sound.maxvol SOUND_CHARGE
 }
 
 { cast_strike	//If melee
-
 	callevent spell_casted PARAM1 PARAM2 PARAM3
 }
 
