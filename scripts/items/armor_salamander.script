@@ -3,7 +3,7 @@
   const ARMOR_BODY		8
   const ARMOR_TEXT		"You slither into some cobra skin armor."
   const BARMOR_TYPE		leather
-  const BARMOR_PROTECTION	35%
+  const BARMOR_PROTECTION	65%
   const BARMOR_PROTECTION_AREA	chest
   const BARMOR_REPLACE_BODYPARTS chest
 
@@ -20,11 +20,11 @@
 {  game_spawn
 
    name 	a|Cobra Skin Armor
-   desc 	This magical armor is enchanted to resist poisons
-   weight 	28
+   desc 	"This magical armor is enchanted to resist poisons."
+   weight 	35
    size 	30
    wearable     1 chest|arms
-   value	190
+   value	250
    
    sethudsprite trade 158
 }

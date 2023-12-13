@@ -5,7 +5,7 @@
 	const ARMOR_TEXT "You equip the Helm of Venom."
 	const BARMOR_TYPE platemail
 	const BARMOR_PROTECTION	60%
-	const STUN_PROTECTION 50
+	const STUN_PROTECTION 40
 
 	const SP_ATTRIB 'skill.spellcasting.affliction.ratio'
 	const ELM_NAME "velm1"
@@ -18,11 +18,11 @@
 { game_spawn
 
 	name a|Helm of Venom
-	desc This battered helm protects the wearer from poisons
-	weight 1
-	size 20
+	desc "This battered helm protects the wearer from poisons."
+	weight	35
+	size	30
 	wearable 1 head
-	value 1000
+	value	1150
 
 	sethudsprite trade 49
 }

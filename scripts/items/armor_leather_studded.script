@@ -3,7 +3,7 @@
   const ARMOR_BODY		6
   const ARMOR_TEXT		"You work your way into some studded leather armor."
   const BARMOR_TYPE		leather
-  const BARMOR_PROTECTION	23%
+  const BARMOR_PROTECTION	60%
   const BARMOR_PROTECTION_AREA	chest
   const BARMOR_REPLACE_BODYPARTS chest
 
@@ -15,7 +15,7 @@
 {  game_spawn
 
    name 	a|Studded Leather Vest
-   desc 	The studded leather armor has lots of nails spread around the vest
+   desc 	"The studded leather armor has lots of nails spread around the vest."
    weight 	28
    size 	30
    wearable     1 chest|arms

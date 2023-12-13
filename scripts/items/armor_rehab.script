@@ -4,7 +4,7 @@
   const ARMOR_BODY		5
   const ARMOR_TEXT		"You work your way into the visual nightmare."
   const BARMOR_TYPE		leather
-  const BARMOR_PROTECTION	40%
+  const BARMOR_PROTECTION	65%
   const BARMOR_PROTECTION_AREA	chest
   const BARMOR_REPLACE_BODYPARTS chest
 
@@ -23,8 +23,8 @@
 {  game_spawn
 
    name 	a|Chromatic Vest
-   desc 	This magic vest makes your eyes swim
-   weight 	12
+   desc 	"This magic vest makes your eyes swim."
+   weight 	35
    size 	30
    wearable     1 chest;arms
    value	3000

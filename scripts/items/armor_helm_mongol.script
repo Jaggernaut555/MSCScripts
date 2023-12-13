@@ -5,7 +5,7 @@
   const ARMOR_TEXT		"You put on a decorated platemail helmet."
   const BARMOR_TYPE		platemail
   const BARMOR_PROTECTION	50%
-	const STUN_PROTECTION 20
+	const STUN_PROTECTION 25
 }
 
 #include items/armor_base_helmet
@@ -13,11 +13,11 @@
 {  game_spawn
 
    name 	a|Decorated Helmet
-   desc 	A decorated platemail helmet
-   weight 	20
-   size 	20
+   desc 	"A decorated platemail helmet."
+   weight   20
+   size     20
    wearable     1 head
-   value	250
+   value    250
    
    sethudsprite trade helm2
 }

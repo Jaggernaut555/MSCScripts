@@ -12,9 +12,9 @@
 {  game_spawn
 
    name 	a|Helm of the Dead
-   desc 	This seems to be stitched from bat wings and rotting flesh
-   weight 	10
-   size 	1
+   desc 	"This seems to be stitched from bat wings and rotting flesh."
+   weight 	20
+   size 	20
    wearable     1 head
    value	1
    

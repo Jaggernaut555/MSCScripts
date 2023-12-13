@@ -12,11 +12,11 @@
 {  game_spawn
 
    name 	a|Helmet of Stability
-   desc 	This thoroughly padded helmet offers extraordinary stun resistance
-   weight 	5
-   size 	20
+   desc 	"This thoroughly padded helmet offers extraordinary stun resistance."
+   weight   60
+   size     40
    wearable     1 head
-   value	1150
+   value    1150
    
    sethudsprite trade 81
 }

@@ -4,7 +4,7 @@
 	const ARMOR_BODY 1	//JHLMV index -2
 	const ARMOR_TEXT		"You assemble the phoenix armor."
 	const BARMOR_TYPE		platemail
-	const BARMOR_PROTECTION	55%
+	const BARMOR_PROTECTION	70%
 	//chest|arms|legs
 	const BARMOR_PROTECTION_AREA	"chest;arms;legs"
 	const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
@@ -25,10 +25,10 @@
 
 	name "Armor of the Phoenix"
 	desc "Forged with the blood of an efreet and the feathers of a phoenix."
-	weight 120
-	size 60
+	weight 150
+	size 100
 	wearable 1 "chest;arms;legs"
-	value 590
+	value 1000
 
 	sethudsprite trade 151
 }

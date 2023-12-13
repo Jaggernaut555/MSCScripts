@@ -5,7 +5,7 @@
 	const ARMOR_BODY 0	//JHLMV index -2
 	const ARMOR_TEXT "You don the Armor of Bravery."
 	const BARMOR_TYPE platemail
-	const BARMOR_PROTECTION	40%
+	const BARMOR_PROTECTION	70%
 	//chest|arms|legs
 	const BARMOR_PROTECTION_AREA "chest;arms;legs"
 	const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
@@ -25,10 +25,10 @@
 
 	name "Armor of Bravery"
 	desc "The bloodstains tell tales of brave warriors fallen in battle."
-	weight 120
-	size 60
+	weight 90
+	size 90
 	wearable 1 "chest;arms;legs"
-	value 590
+	value 750
 
 	sethudsprite trade 150
 }

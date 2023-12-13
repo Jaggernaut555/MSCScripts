@@ -3,7 +3,7 @@
   const ARMOR_BODY		1
   const ARMOR_TEXT		"You strap on some banded mail armor."
   const BARMOR_TYPE		platemail
-  const BARMOR_PROTECTION	30%
+  const BARMOR_PROTECTION	65%
   const BARMOR_PROTECTION_AREA	chest;arms;legs
   const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
 
@@ -15,9 +15,9 @@
 {  game_spawn
 
    name 	a|Suit of Banded Mail
-   desc 	This is an old set of banded armor
-   weight 	90
-   size 	90
+   desc 	"An old set of banded armor."
+   weight 	60
+   size 	60
    wearable     1 chest|arms|legs
    value	350
    

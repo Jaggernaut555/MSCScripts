@@ -12,10 +12,10 @@
 {  game_spawn
 
    name 	a|Platemail Helmet
-   desc 	A platemail helmet
-   weight 	15
-   size 	15
-   value	100
+   desc 	"A platemail helmet."
+   weight   15
+   size     15
+   value    100
    
    sethudsprite trade helm1
 }
