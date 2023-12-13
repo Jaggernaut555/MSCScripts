@@ -1,7 +1,7 @@
 //Bat summoned by giant bat
 
 {
-   setvard NPC_GIVE_EXP 5
+   setvard NPC_GIVE_EXP 7
    setvard CAN_FLEE 0
    //const DELETE_ON_DEATH 1	//effs with giant bat summon
 }

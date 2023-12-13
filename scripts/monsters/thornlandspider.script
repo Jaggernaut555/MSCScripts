@@ -37,7 +37,7 @@
    const ATTACK_DAMAGE_LOW  9.0
    const ATTACK_DAMAGE_HIGH 12.0
    const ATTACK_ACCURACY 85%
-   setvard NPC_GIVE_EXP 	100
+   setvard NPC_GIVE_EXP 	200
 
    const SPIDER_IDLE_VOL   4
    const SPIDER_IDLE_DELAY 3.6
@@ -57,7 +57,7 @@
    name the|Timidus Textor
    hearingsensitivity 6
    setmodel monsters/giant_spider.mdl
-   //setvard NPC_GIVE_EXP 100 //doesn't seem to be coming accross in base_monster
+   //setvard NPC_GIVE_EXP 200 //doesn't seem to be coming accross in base_monster
    takedmg all .85
 }
 

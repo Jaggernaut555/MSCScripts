@@ -41,7 +41,7 @@
    name a|Rat
    roam 1
    hearingsensitivity 0
-   setvard NPC_GIVE_EXP 3
+   setvard NPC_GIVE_EXP 4
    race vermin
 
    setmodel monsters/rat.mdl

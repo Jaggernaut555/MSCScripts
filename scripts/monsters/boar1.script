@@ -22,7 +22,7 @@
    name a|Tamed Boar
    roam 1
    hearingsensitivity 0
-   setvard NPC_GIVE_EXP 6
+   setvard NPC_GIVE_EXP 9
 
    setmodel monsters/boar.mdl
    setmodelbody	1 0

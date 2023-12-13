@@ -11,7 +11,7 @@
 
 	const IS_HARD 1
 
-   const NPC_BASE_EXP		9
+   const NPC_BASE_EXP		12
 }
 
 #include monsters/boar

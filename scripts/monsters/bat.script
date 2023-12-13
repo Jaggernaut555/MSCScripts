@@ -22,7 +22,7 @@
    setvard ATTACK_HITCHANCE 60%
 	if ( $lcase(game.map.name) equals catacombs ) setvard ATTACK_HITCHANCE 80%
    const ATTACK_DAMAGE 1
-   setvard NPC_GIVE_EXP 5
+   setvard NPC_GIVE_EXP 7
 
    setvard CAN_FLEE 1		  //base_npc_attack - Whether I run away
    const FLEE_HEALTH 0		  //base_npc_attack - Flee heath

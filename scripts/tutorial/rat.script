@@ -18,7 +18,7 @@
    name an|Angry Giant Rat
    roam 1
    hearingsensitivity 10
-   setvard NPC_GIVE_EXP 3
+   setvard NPC_GIVE_EXP 4
    race demon
 
    setmodel monsters/giant_rat.mdl
