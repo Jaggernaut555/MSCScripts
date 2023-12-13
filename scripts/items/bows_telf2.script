@@ -30,10 +30,11 @@
 
 { bow_spawn
 
-	name 			a|Torkalath Frost Bow
-	desc 			This enchanted bow is cold to the touch.
-	weight 			100
-	value			1500
+	name	a|Torkalath Frost Bow
+	desc 	"This enchanted bow is cold to the touch."
+	weight 	100
+	size	10
+	value	1500
 	sethudsprite trade	166
 
 	callevent custom_register

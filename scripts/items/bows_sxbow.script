@@ -38,9 +38,10 @@
 
 { game_spawn
 	name a|Steam Crossbow
-	desc A strange dwarven contraption
-	weight 50
-	value 4000
+	desc "A strange dwarven contraption."
+	weight	50
+	size	10
+	value	4000
 	//wearable 0
 
 	setanimext bow

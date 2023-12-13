@@ -23,10 +23,11 @@
 
 { bow_spawn
 
-	name 			a|Phoenix Bow
-	desc 			A magical bow that shoots explosive projectiles.
-	weight 			100
-	value			1500
+	name 	a|Phoenix Bow
+	desc 	"A magical bow that shoots explosive projectiles."
+	weight 	100
+	size	10
+	value	1500
 	sethudsprite trade	129
 
 	callevent custom_register

@@ -30,10 +30,11 @@
 
 { bow_spawn
 
-	name 			a|Torkalath Fire Bow
-	desc 			Spiral flames are engraved in this ornate bow.
-	weight 			100
-	value			1500
+	name 	a|Torkalath Fire Bow
+	desc 	"Spiral flames are engraved in this ornate bow."
+	weight 	100
+	value	1500
+	size	10
 	sethudsprite trade	166
 
 	callevent custom_register

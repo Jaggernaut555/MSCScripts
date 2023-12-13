@@ -30,10 +30,11 @@
 
 { bow_spawn
 
-	name 			a|Torkalath Chaos Bow
-	desc 			An enchanted bow oft wielded by the dark elves of Torkalath.
-	weight 			100
-	value			1750
+	name 	a|Torkalath Chaos Bow
+	desc 	"An enchanted bow oft wielded by the dark elves of Torkalath."
+	weight 	100
+	size	10
+	value	1750
 	sethudsprite trade	166
 
 	callevent custom_register

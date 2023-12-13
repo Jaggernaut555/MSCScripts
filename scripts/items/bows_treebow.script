@@ -12,8 +12,8 @@
 
   //Used in base_ranged
   //------------------
-  const RANGED_FORCE		750
-  const RANGED_ENERGY		1
+  const RANGED_FORCE		900
+  const RANGED_ENERGY		0.2
   const RANGED_ACCURACY		10;4	//Uncharged COF (high);  Charged COF (low)
   const RANGED_POSTFIRE_DELAY	0.3
 }
@@ -23,10 +23,10 @@
 { bow_spawn
 
    name 	a|Tree Bow
-   desc 	A roughly crafted bow of bark and leaves
-   weight 	10
-   size 	5
-   value	3
+   desc 	"A roughly crafted bow of bark and leaves."
+   weight   10
+   size     5
+   value    3
    sethudsprite trade 47
 }
 

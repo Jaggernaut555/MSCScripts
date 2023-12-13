@@ -31,10 +31,11 @@
 
 { [shared] bow_spawn
 
-	name 			a|Frost Bow
-	desc 			An icy bow that fires icy projectiles.
-	weight 			100
-	value			1500
+	name 	a|Frost Bow
+	desc 	"An icy bow that fires icy projectiles."
+	weight 	100
+	size	10
+	value	1500
 	sethudsprite trade	135
 
 	callevent custom_register

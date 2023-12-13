@@ -51,9 +51,9 @@
 { weapon_spawn
 
 	name 	a|Heavy Crossbow
-	desc 	This mighty crossbow has some kick to it
-	weight 	1
-	size 	3
+	desc 	"This mighty crossbow has some kick to it."
+	weight 	100
+	size 	15
 	value	3000
 	wearable     0
 	setanimext   bow

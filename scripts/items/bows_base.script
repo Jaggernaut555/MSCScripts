@@ -18,7 +18,7 @@
   const RANGED_DMG_TYPE		pierce
   const RANGED_STAT		archery
   const RANGED_PROJECTILE	arrow
-  const RANGED_AIMANGLE		(0,9,0)
+  const RANGED_AIMANGLE		(0,0,0)
   const RANGED_PULLTIME		0.8
 }
 
