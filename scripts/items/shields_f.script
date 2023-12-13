@@ -14,13 +14,13 @@
 	const MODEL_WORLD weapons/p_weapons4.mdl
 	const MODEL_HANDS weapons/p_weapons4.mdl
   	const MODEL_WEAR weapons/p_weapons4.mdl
-	const MODEL_BODY_OFS 46
+	const MODEL_BODY_OFS	46
 	const MELEE_ENERGY		15
 	const MELEE_ACCURACY   	90%
-	const BLOCK_CHANCE_UP		100	//Chance of blocking damage while up
+	const BLOCK_CHANCE_UP	100	//Chance of blocking damage while up
 	const DMG_BLOCK_UP		0.5	//Damage ratio player takes when blocks (0.0=none 1.0=all)
 	const BLOCK_CHANCE_DOWN	10	//Chance of blocking all damage while down
-	const SHIELD_IMMORTAL		1
+	const SHIELD_IMMORTAL	1
 	const SOUND_BLOCK      	debris/metal3.wav
 
 	const ANIM_PREFIX  standard
@@ -35,11 +35,11 @@
 {  shield_spawn
 
    name 	a|Demon Shield
-   desc 	For when it's time to get out of the kitchen
-   weight 	200
-   size 	45
+   desc 	"For when it's time to get out of the kitchen."
+   weight	120
+   size 	70
    value	5000
-   quality      2000
+   quality	2000
    //sethudsprite hand 191
    sethudsprite trade 191
 }
@@ -50,7 +50,7 @@
 
 { game_wear
 
-	playermessage You sling a demon shield shield over your shoulder. 
+	playermessage "You sling the demon shield shield over your shoulder. "
 }
 
 { bweapon_effect_activate

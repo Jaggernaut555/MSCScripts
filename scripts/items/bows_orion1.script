@@ -40,8 +40,8 @@
 
 	name 	an|Orion Bow
 	desc 	This enchanted bow fires spheres of pure mana
-	weight 	30
-	size 	1
+	weight 	50
+	size 	10
 	value	1000
 	sethudsprite trade 108
 

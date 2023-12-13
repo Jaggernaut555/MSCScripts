@@ -1,0 +1,97 @@
+//Upgrade of Wooden Shield
+
+{
+	const MODEL_VIEW			viewmodels/custom_models/bucklers.mdl
+	const MODEL_VIEW_IDX		4
+	//const MODEL_VIEW			viewmodels/v_shields.mdl
+	//const MODEL_VIEW_IDX		1
+	const MODEL_BODY_OFS		61
+
+	const NOPUSH_CHANCE			35%
+	const PARRY_MULTI			1.3
+	const SHIELD_BASE_PARRY		10
+
+	const SHIELD_REPORT_HITS	1		//Allows shield_hit to activate on successful block
+	const EFFECT_RANGE			150		//Range for shield_hit to activate
+
+	const MELEE_ENERGY			4
+	const MELEE_ACCURACY		30%
+	const BLOCK_CHANCE_UP		95		//%Chance of blocking damage while up
+	const BLOCK_CHANCE_DOWN		20		//%Chance of blocking all damage while down
+	const DMG_BLOCK_UP			0.45	//%Damage player takes when blocks (0.0=none 1.0=all)
+	const SHIELD_MAXHEALTH		1000
+	const SHIELD_IMMORTAL		0
+	setvard SHIELD_HEALTH		1000
+	const SHIELD_BREAK_SOUND	debris/bustmetal1.wav //debris/bustcrate3.wav
+	const SOUND_BLOCK			debris/wood2.wav
+	precache SOUND_BLOCK
+}
+
+#include items/shields_base
+
+{  shield_spawn
+
+   name 	a|Thorned Shield
+   desc 	"A crude, yet surprisingly sturdy shield of Orcish craft."
+   weight 	35
+   size     30
+   value    200
+   quality  80
+   //setprop ent_me skin 1 //testing
+   //setviewmodelprop ent_me skin 1 //testing
+   //sethudsprite hand ironshield
+   sethudsprite trade 178
+}
+
+
+{ game_wear
+
+  playermessage "You sling the barbaric shield over your shoulder. "
+}
+
+{ shield_hit //1: Attacker  2: Inflictor  3: dmg  4: dmg type
+
+	if $get(PARAM1,isalive)
+	if !$get(PARAM2,is_projectile)
+
+	local MY_OWNER $get(ent_owner,id)
+	local THE_ATTACKER $get(PARAM1,id)
+  	local DAMAGE_ROLL $randf(0,3)
+
+	if THE_ATTACKER isnot $get(ent_owner,id)	//don't freeze self shielding from effects
+
+	local OWNER_ORG $get(MY_OWNER,origin)
+	local ATTACKER_ORG $get(THE_ATTACKER,origin)
+
+	if $dist(OWNER_ORG,ATTACKER_ORG) < EFFECT_RANGE
+
+	if( !game.item.attacking )
+	{
+		local HIT_CHANCE 1
+	}
+	else
+	{
+		local HIT_CHANCE 4
+	}
+
+  	local HIT_ROLL $rand(1,HIT_CHANCE)
+
+  	if( HIT_ROLL == 1 )
+  	{
+		//playermessage Attacker takes damage! //Test Message
+		playsound 2 const.snd.fullvol debris/metal3.wav
+    	xdodamage THE_ATTACKER direct DAMAGE_ROLL 100% MY_OWNER MY_OWNER none pierce none
+	}
+}
+
+//xdodamage $get(ent_currentplayer,origin) L_RADIUS                       L_DMG  100%         $get(ent_currentplayer,id) $get(ent_currentplayer,id) none       L_TYPE   none
+//xdodamage	target|(src_origin)            range|aoe|(dest_origin)|direct damage cth|fall_off attacker                   inflicter                 <skill|none dmg_type [flag_string]
+
+		//- <inflictor> and <attacker> should usually match, save when used in weapons or projectiles, in which case <inflicter> should indicate said items.
+		//[flag_string] - multiple flags can be added, if seperated by semi-colons, flags follow:
+		//= "dmgevent:<prefix>"
+		//- You can use this to setup seperate _dodamage processing events for each attack
+		//- This will call <prefix>_dodamage, in addition to the usual game_dodamage, on the <attacker>
+		//- If prefix begins with * - <prefix>_dodamage will be called on <inflictor> instead of <attacker>, sans the * (for weapons)
+		//= "nodecal"
+		//- Causes trace damage events not to decal walls (note that they still fire hitwall/game_hitworld when calling from an item/weapon script)

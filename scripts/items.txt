@@ -237,7 +237,7 @@ proj_poison_cloud
 proj_acid_bolt
 proj_snow_ball
 proj_hit_wall
-//shields_wooden
+shields_wooden
 sheath_spellbook
 scroll_fire_ball
 scroll_poison
@@ -802,6 +802,9 @@ crest_noweed
 swords_gb
 crest_sor
 
+//AJ DEC2023
+shields_woodenr
+shields_woodenorc
 
 //do not edit below this line
 

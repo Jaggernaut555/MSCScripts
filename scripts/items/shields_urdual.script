@@ -1,6 +1,6 @@
 //Clunky shield of the beat bag
 {
-	const NOPUSH_CHANCE 75%
+	const NOPUSH_CHANCE 100%
 
 	const PARRY_MULTI 3.0
 	const SHIELD_BASE_PARRY 40
@@ -9,15 +9,15 @@
 	const MODEL_VIEW_IDX	3
 	//const MODEL_VIEW armor/shields/darkshield_rview.mdl
 
-	const MODEL_BODY_OFS		73 //12
-	const MELEE_ENERGY		1
+	const MODEL_BODY_OFS	73 //12
+	const MELEE_ENERGY		10
 	const MELEE_ACCURACY   	150%
-	const BLOCK_CHANCE_UP		100	//%Chance of blocking damage while up
+	const BLOCK_CHANCE_UP	100	//%Chance of blocking damage while up
 	const DMG_BLOCK_UP		0.05 //%Damage player takes when blocks (0.0=none 1.0=all)
 	const BLOCK_CHANCE_DOWN	50	//%Chance of blocking all damage while down
 	const SHIELD_MAXHEALTH	infinite
-	const SHIELD_IMMORTAL		1
-	setvard SHIELD_HEALTH		infinite
+	const SHIELD_IMMORTAL	1
+	setvard SHIELD_HEALTH	infinite
 	const SOUND_BLOCK      	doors/doorstop5.wav
 	const EFFECT_RANGE		150
 }
@@ -31,17 +31,17 @@
 {  shield_spawn
 
    name 	an|Urdulian Shield
-   desc 	A massive shield forged from the seal of a fallen temple of Urdual
+   desc 	"A massive shield forged from the seal of a fallen temple of Urdual."
    weight 	120
-   size 	45
+   size		80
    value	5000
-   quality      2000
+   quality	2000
    sethudsprite hand 165
    sethudsprite trade 165
 }
 
 { game_wear
-	playermessage You heft an Urdulian shield onto your back.
+	playermessage "You heft the Urdulian shield onto your back."
 }
 
 { bweapon_effect_activate //Slow activate

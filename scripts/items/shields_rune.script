@@ -3,41 +3,40 @@
 
 
 {
-	const NOPUSH_CHANCE 75%
-
-	const PARRY_MULTI 2.0
-	const SHIELD_BASE_PARRY 25
-
 	const MODEL_VIEW       	viewmodels/v_shields.mdl
 	const MODEL_VIEW_IDX	2
 	//const MODEL_VIEW armor/shields/runeshield_rview.mdl
+	const MODEL_BODY_OFS	69 //8
+
+	const NOPUSH_CHANCE		75%
+	const PARRY_MULTI		2.0
+	const SHIELD_BASE_PARRY 25
 
 	const SHIELD_REPORT_HITS 1
-
-  const MODEL_BODY_OFS		69 //8
-  const MELEE_ENERGY		15
-  const MELEE_ACCURACY   	90%
-  const BLOCK_CHANCE_UP		100	//%Chance of blocking damage while up
-  const DMG_BLOCK_UP		0.35	//%Damage player takes when blocks (0.0=none 1.0=all)
-  const BLOCK_CHANCE_DOWN	30	//%Chance of blocking all damage while down
-  const SHIELD_MAXHEALTH	infinite
-  const SHIELD_IMMORTAL		1
-  setvard SHIELD_HEALTH		infinite
-  const SOUND_BLOCK      	doors/doorstop5.wav
-  const EFFECT_RANGE		150	//would use MELE_RANGE - but fraid might due funkiness
-  precache SOUND_BLOCK
+	const EFFECT_RANGE		150	//would use MELE_RANGE - but fraid might due funkiness
+  
+	const MELEE_ENERGY		15
+	const MELEE_ACCURACY   	90%
+	const BLOCK_CHANCE_UP	100	//%Chance of blocking damage while up
+	const BLOCK_CHANCE_DOWN	30	//%Chance of blocking all damage while down
+	const DMG_BLOCK_UP		0.35	//%Damage player takes when blocks (0.0=none 1.0=all)
+	const SHIELD_MAXHEALTH	infinite
+	const SHIELD_IMMORTAL	1
+	setvard SHIELD_HEALTH	infinite
+	const SOUND_BLOCK      	doors/doorstop5.wav
+	precache SOUND_BLOCK
 }
 
 #include items/shields_base
 
 {  shield_spawn
 
-   name 	a|Rune Shield
-   desc 	This rune shield is cold to the touch
-   weight 	40
-   size 	45
+   name 	a|Runic Shield
+   desc 	"This runic shield is cold to the touch."
+   weight	75
+   size		45
    value	5000
-   quality      2000
+   quality	2000
    sethudsprite hand ironshield
    sethudsprite trade runeshield
 }
@@ -45,7 +44,7 @@
 
 { game_wear
 
-  playermessage You sling a Rune shield over your shoulder.
+  playermessage "You sling the Runic shield over your shoulder."
 }
 
 { shield_hit //1: Attacker  2: Inflictor  3: dmg  4: dmg type

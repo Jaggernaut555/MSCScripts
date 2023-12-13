@@ -51,6 +51,8 @@
 		if !BO_ZOMBIE_MODE
 		setstat parry 90
 		setmodelbody 2 6
+		setvard DROP_ITEM2 shields_woodenorc
+		setvard DROP_ITEM2_CHANCE 20%
 	}
 }
 

@@ -210,11 +210,11 @@
 
 	if $within_cone2D(l.attpos,l.mypos,l.myang,175)	//Attack must come from in front of player
 
-	if ( SHIELD_REPORT_HITS )
-	{
-		local THE_INFLICTOR PARAM2
-		callevent shield_hit THE_ATTACKER THE_INFLICTOR $lcase(PARAM3) $lcase(PARAM4)
-	}
+	//if ( SHIELD_REPORT_HITS )
+	//{
+	//	local THE_INFLICTOR PARAM2
+	//	callevent shield_hit THE_ATTACKER THE_INFLICTOR $lcase(PARAM3) $lcase(PARAM4)
+	//}
 
 	//if $rand(0,100) < MELEE_ACCURACY	//Chance to block at all (reduce damage or eliminate it)
 	
@@ -225,7 +225,7 @@
 
 	if( game.item.attacking ) 
 	{
-		////dbg Sheild is up
+		////dbg Shield is up
 		if ( $rand(1,100) <= BLOCK_CHANCE_UP ) 
 		{
 			setvard SHIELD_DMG_TAKEN PARAM3
@@ -250,6 +250,12 @@
 			//}
 			setdmg dmg SHIELD_DMG_TAKEN
 			callevent shield_deflect THE_ATTACKER
+
+			if ( SHIELD_REPORT_HITS )
+			{
+				local THE_INFLICTOR PARAM2
+				callevent shield_hit THE_ATTACKER THE_INFLICTOR $lcase(PARAM3) $lcase(PARAM4)
+			}
 		}
 	}
 	
@@ -274,6 +280,12 @@
 			setdmg dmg 0
 			//clientevent update ent_owner DMG_BLOCK_DOWN shield_absorb		
 			callevent shield_deflect THE_ATTACKER
+
+			if ( SHIELD_REPORT_HITS )
+			{
+				local THE_INFLICTOR PARAM2
+				callevent shield_hit THE_ATTACKER THE_INFLICTOR $lcase(PARAM3) $lcase(PARAM4)
+			}
 		}
 	}
 }
