@@ -3,9 +3,11 @@
   const ARMOR_BODY		2
   const ARMOR_TEXT		"You suit up in some knight's armor."
   const BARMOR_TYPE		platemail
-  const BARMOR_PROTECTION	75%
+  const BARMOR_PROTECTION	70%
   const BARMOR_PROTECTION_AREA	"chest;arms;legs"
   const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
+
+	const ARMOR_STR_REQ 25
 
 	const NEW_ARMOR_OFS 3
 }
@@ -19,7 +21,7 @@
    weight 	210
    size     150
    wearable     1 chest|arms|legs
-   value    1000
+   value    1250
    
    sethudsprite trade 3
 }

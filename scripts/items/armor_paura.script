@@ -5,7 +5,7 @@
 	const ARMOR_BODY 7	//JHLMV index -2
 	const ARMOR_TEXT		"You assemble the the acid plate armor."
 	const BARMOR_TYPE		platemail
-	const BARMOR_PROTECTION	70%
+	const BARMOR_PROTECTION	65%
 	//chest|arms|legs
 	const BARMOR_PROTECTION_AREA	"chest;arms;legs"
 	const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
@@ -30,10 +30,10 @@
 
 	name "an|Acid Plate"
 	desc "Enchanted platemail scorched by acid."
-	weight 180
-	size 100
+	weight	180
+	size	100
 	wearable 1 "chest;arms;legs"
-	value 1000
+	value	1500
 
 	sethudsprite trade 154
 }

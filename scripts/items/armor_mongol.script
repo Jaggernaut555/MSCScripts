@@ -3,9 +3,11 @@
   const ARMOR_BODY		1
   const ARMOR_TEXT		"You strap on some banded mail armor."
   const BARMOR_TYPE		platemail
-  const BARMOR_PROTECTION	65%
+  const BARMOR_PROTECTION	50%
   const BARMOR_PROTECTION_AREA	chest;arms;legs
   const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
+
+	const ARMOR_STR_REQ 10
 
 	const NEW_ARMOR_OFS 2
 }
@@ -16,10 +18,10 @@
 
    name 	a|Suit of Banded Mail
    desc 	"An old set of banded armor."
-   weight 	60
-   size 	60
-   wearable     1 chest|arms|legs
-   value	350
+   weight 	90
+   size     90
+   wearable 1 chest|arms|legs
+   value    400
    
    sethudsprite trade armor2
 }

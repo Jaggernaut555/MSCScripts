@@ -5,10 +5,12 @@
 	const ARMOR_BODY 4	//JHLMV index -2
 	const ARMOR_TEXT		"You don the gladiator armor."
 	const BARMOR_TYPE		leather
-	const BARMOR_PROTECTION	70%
+	const BARMOR_PROTECTION	60%
 	//chest|arms|legs
 	const BARMOR_PROTECTION_AREA	chest
 	const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
+
+	const ARMOR_STR_REQ 20
 
 	const NEW_ARMOR_OFS 14
 }
@@ -19,10 +21,10 @@
 
 	name 	a|Gladiator Armor
 	desc 	"The spiked set of banded leather."
-	weight 	50
-	size 	30
-	wearable     1 chest|arms
-	value	250
+	weight		50
+	size		30
+	wearable	1 chest|arms
+	value		750
 
 	sethudsprite trade 159
 }

@@ -5,6 +5,8 @@
 	const BARMOR_TYPE		platemail
 	const BARMOR_PROTECTION	30%
 	const STUN_PROTECTION 20
+
+	const ARMOR_STR_REQ 5
 }
 
 #include items/armor_base_helmet

@@ -6,6 +6,8 @@
 	const BARMOR_TYPE platemail
 	const BARMOR_PROTECTION	60%
 	const STUN_PROTECTION 35
+
+	const ARMOR_STR_REQ 20
 }
 
 #include [server] items/base_elemental_resist

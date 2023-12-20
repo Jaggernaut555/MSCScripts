@@ -3,7 +3,7 @@
   const ARMOR_BODY		5
   const ARMOR_TEXT		"You put on the hide armor."
   const BARMOR_TYPE		leather
-  const BARMOR_PROTECTION	50%
+  const BARMOR_PROTECTION	20%
   const BARMOR_PROTECTION_AREA	chest
   const BARMOR_REPLACE_BODYPARTS chest
 
@@ -22,10 +22,10 @@
 
    name 	a|Hide Armor
    desc 	"Basic protective armor made out of animal skins, commonly used by hunters and travelers."
-   weight 	12
-   size 	30
-   wearable     1 chest|arms
-   value	30
+   weight   12
+   size     30
+   wearable 1 chest|arms
+   value    30
    
    sethudsprite trade 155
 }

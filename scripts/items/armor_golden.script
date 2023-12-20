@@ -1,13 +1,14 @@
 {
   const ARMOR_MODEL      	armor/p_armorvest.mdl
   const ARMOR_BODY		3
-  const ARMOR_TEXT		"It is as comforting putting this armor on as it is a beauty to the eye."
+  //const ARMOR_TEXT		"It is as comforting putting this armor on as it is a beauty to the eye."
+  const ARMOR_TEXT		"This radiant armor shines beautifully as you put it on."
   const BARMOR_TYPE		platemail
-  const BARMOR_PROTECTION	80%
+  const BARMOR_PROTECTION	75%
   const BARMOR_PROTECTION_AREA	"chest;arms;legs"
   const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
 
-	const ARMOR_STR_REQ 25
+	const ARMOR_STR_REQ 40
 
 	const NEW_ARMOR_OFS 4
 }
@@ -19,9 +20,69 @@
    name 	Lord Vecilus' Mail
    desc 	"This elven armor was once worn by Lord Vecilus."
    weight 	210
-   size 	150
+   size     150
    wearable     1 chest|arms|legs
-   value	1200
+   value    1500
    
    sethudsprite trade 148
+}
+
+#include items/base_miscitem
+#include items/base_effect_armor
+
+//Attempt to make armour glow
+//if $get(ent_me,is_worn)
+//if $get(ent_me,ground) //wrong command
+
+{ [server] game_deploy
+
+	if $get(ent_owner,scriptvar,'PLR_IN_WORLD')
+	if !LIGHT_ON
+	callevent light_on
+}
+
+{ [server] ext_activate_items
+	if PARAM1 equals $get(ent_owner,id)
+	if $get(ent_me,is_worn)
+	if $get(ent_owner,scriptvar,'PLR_IN_WORLD')
+	if !LIGHT_ON
+	callevent light_on
+}
+
+{ [server] barmor_effect_activate
+	if !LIGHT_ON
+	callevent light_on
+}
+
+{ [server] barmor_effect_remove
+	if LIGHT_ON
+	callevent light_off
+}
+
+{ [override] game_fall
+
+	setmodel MODEL_WORLD
+	setmodelbody 0 MODEL_BODY_OFS
+
+	if LIGHT_ON
+	callevent light_off
+}
+
+{ [server] light_on
+
+	if $get(ent_me,is_worn)
+	if $get(ent_owner,scriptvar,'PLR_IN_WORLD')
+	if !$get(ent_owner,scriptvar,'PLR_HAS_GLOW') //dont fux with existing glow
+	setvard LIGHT_ON 1
+	callexternal GAME_MASTER gm_light_update new $get(ent_owner,index) $vec(240,240,100) 300
+}
+
+{ [server] light_off
+	if !$get(ent_owner,scriptvar,'PLR_HAS_GLOW') //dont fux with existing glow
+	callexternal GAME_MASTER gm_light_update remove $get(ent_owner,index) $vec(240,240,100) 300
+	setvard LIGHT_ON 0
+}
+
+{ ext_restore_item_lights
+	callevent light_on
 }

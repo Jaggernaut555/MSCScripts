@@ -3,13 +3,15 @@
   const ARMOR_BODY		8
   const ARMOR_TEXT		"You slither into some cobra skin armor."
   const BARMOR_TYPE		leather
-  const BARMOR_PROTECTION	65%
+  const BARMOR_PROTECTION	55%
   const BARMOR_PROTECTION_AREA	chest
   const BARMOR_REPLACE_BODYPARTS chest
 
 	const ELM_NAME "poisl"
 	const ELM_TYPE "poison"
 	const ELM_AMT 75
+
+  const ARMOR_STR_REQ 15
 
 	const NEW_ARMOR_OFS 9
 }
@@ -21,10 +23,10 @@
 
    name 	a|Cobra Skin Armor
    desc 	"This magical armor is enchanted to resist poisons."
-   weight 	35
-   size 	30
+   weight 40
+   size 30
    wearable     1 chest|arms
-   value	250
+   value  850
    
    sethudsprite trade 158
 }

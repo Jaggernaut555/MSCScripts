@@ -10,6 +10,8 @@
 	const SP_ATTRIB 'skill.spellcasting.affliction.ratio'
 	const ELM_NAME "velm1"
 	const ELM_TYPE "poison"
+
+	const ARMOR_STR_REQ 20
 }
 
 #include [server] items/base_elemental_resist

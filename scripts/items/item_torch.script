@@ -21,7 +21,7 @@
 	const MELEE_ENERGY		1
 	const MELEE_DMG		60
 	const MELEE_DMG_RANGE     	60
-	const MELEE_DMG_TYPE		fire
+	const MELEE_DMG_TYPE		blunt
 	const MELEE_ACCURACY		30
 	const MELEE_STAT		bluntarms
 	const MELEE_ALIGN_BASE	4,-6 

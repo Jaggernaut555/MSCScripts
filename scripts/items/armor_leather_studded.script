@@ -3,9 +3,11 @@
   const ARMOR_BODY		6
   const ARMOR_TEXT		"You work your way into some studded leather armor."
   const BARMOR_TYPE		leather
-  const BARMOR_PROTECTION	60%
+  const BARMOR_PROTECTION	35%
   const BARMOR_PROTECTION_AREA	chest
   const BARMOR_REPLACE_BODYPARTS chest
+
+	const ARMOR_STR_REQ 5
 
 	const NEW_ARMOR_OFS 7
 }
@@ -16,10 +18,10 @@
 
    name 	a|Studded Leather Vest
    desc 	"The studded leather armor has lots of nails spread around the vest."
-   weight 	28
-   size 	30
-   wearable     1 chest|arms
-   value	190
+   weight   30
+   size     30
+   wearable 1 chest|arms
+   value    200
    
    sethudsprite trade 156
 }

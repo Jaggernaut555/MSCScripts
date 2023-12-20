@@ -9,6 +9,8 @@
 	const SP_ATTRIB 'skill.spellcasting.ice.ratio'
 	const ELM_NAME "coldh"
 	const ELM_TYPE "cold"
+
+	const ARMOR_STR_REQ 20
 }
 
 #include [server] items/base_elemental_resist
@@ -31,5 +33,5 @@
 	setvard ELM_AMT $get(ent_owner,SP_ATTRIB)
 	multiply ELM_AMT 2
 	multiply ELM_AMT 100
-	if ( ELM_AMT > 50 ) setvard ELM_AMT 50
+	if ( ELM_AMT > 25 ) setvard ELM_AMT 25
 }

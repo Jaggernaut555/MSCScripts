@@ -1,15 +1,16 @@
-//https://www.youtube.com/watch?v=UzdHSqkzgdM
+//
 {
   const ARMOR_MODEL      	armor/p_armorvest.mdl
   const ARMOR_BODY		5
   const ARMOR_TEXT		"You work your way into the visual nightmare."
   const BARMOR_TYPE		leather
-  const BARMOR_PROTECTION	65%
+  const BARMOR_PROTECTION	55%
   const BARMOR_PROTECTION_AREA	chest
   const BARMOR_REPLACE_BODYPARTS chest
 
 	const FREQ_CHANGE 90.0
 
+	const ARMOR_STR_REQ 15
 
 	const NEW_ARMOR_OFS 19
 
@@ -24,10 +25,10 @@
 
    name 	a|Chromatic Vest
    desc 	"This magic vest makes your eyes swim."
-   weight 	35
+   weight 	40
    size 	30
    wearable     1 chest;arms
-   value	3000
+   value	2000
    
    sethudsprite trade 12
 }

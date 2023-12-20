@@ -4,7 +4,7 @@
 	const ARMOR_BODY 5	//JHLMV index -2
 	const ARMOR_TEXT		"You assemble the envenomed plate mail."
 	const BARMOR_TYPE		platemail
-	const BARMOR_PROTECTION	70%
+	const BARMOR_PROTECTION	65%
 	//chest|arms|legs
 	const BARMOR_PROTECTION_AREA	"chest;arms;legs"
 	const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
@@ -28,7 +28,7 @@
 	weight 180
 	size 100
 	wearable 1 "chest;arms;legs"
-	value 1000
+	value 1500
 
 	sethudsprite trade 152
 }

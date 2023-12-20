@@ -3,9 +3,9 @@
 	const ARMOR_MODEL armor/p_armorvest2.mdl
 	const ARMOR_GROUP 4
 	const ARMOR_BODY 0	//JHLMV index -2
-	const ARMOR_TEXT "You don the Armor of Bravery."
+	const ARMOR_TEXT "You hear the heartbeats of thousands of fallen warriors..."
 	const BARMOR_TYPE platemail
-	const BARMOR_PROTECTION	70%
+	const BARMOR_PROTECTION	60%
 	//chest|arms|legs
 	const BARMOR_PROTECTION_AREA "chest;arms;legs"
 	const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
@@ -14,7 +14,8 @@
 
 	const BER_ACTIVATE_WHILE_WORN 1
 
-	const ARMOR_STR_REQ 40
+	//const ARMOR_STR_REQ 25
+
 	const NEW_ARMOR_OFS 10
 }
 
@@ -25,10 +26,10 @@
 
 	name "Armor of Bravery"
 	desc "The bloodstains tell tales of brave warriors fallen in battle."
-	weight 90
-	size 90
+	weight 120
+	size 100
 	wearable 1 "chest;arms;legs"
-	value 750
+	value 1250
 
 	sethudsprite trade 150
 }
@@ -37,8 +38,10 @@
 	if game.serverside
 	if $get(ent_me,is_worn)
 	if !EFFECT_ACTIVE
-	gplayermessage ent_owner "You are now... stylin'..."
+	rplayermessage ent_owner "You feel unstoppable"
+	//gplayermessage ent_owner "You are now... stylin'..."
 	setvard EFFECT_ACTIVE 1
+	callevent healing_me
 }
 
 { [override] elm_remove_effect
@@ -50,4 +53,19 @@
 { [server] ext_activate_items
 	if PARAM1 equals $get(ent_owner,id)
 	setvard EFFECT_ACTIVE 0
+}
+
+{	healing_me
+
+	if( $get(ent_me,is_worn) )
+
+	local MY_MAX_HEALTH $get(ent_owner,maxhp)
+	local MY_CUR_HEALTH $get(ent_owner,hp)
+
+	if ( MY_CUR_HEALTH < MY_MAX_HEALTH )
+	{
+	givehp $get(ent_owner,id) 1
+	playsound 0 10 player/heartbeat_noloop.wav
+	}
+	callevent 1.0 healing_me
 }

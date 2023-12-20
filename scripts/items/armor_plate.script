@@ -3,9 +3,11 @@
   const ARMOR_BODY		0
   const ARMOR_TEXT		"You put on some platemail armor."
   const BARMOR_TYPE		platemail
-  const BARMOR_PROTECTION	70%
+  const BARMOR_PROTECTION	60%
   const BARMOR_PROTECTION_AREA	chest;arms;legs
   const BARMOR_REPLACE_BODYPARTS BARMOR_PROTECTION_AREA
+
+	const ARMOR_STR_REQ 15
 
 	const NEW_ARMOR_OFS 1
 }
@@ -19,7 +21,7 @@
    weight 	120
    size 	100
    wearable     1 chest|arms|legs
-   value	750
+   value	800
    
    sethudsprite trade armor1
 }

@@ -3,13 +3,15 @@
 	const ARMOR_BODY		7
 	const ARMOR_TEXT		"You work your way into some fire lizard skins."
 	const BARMOR_TYPE		leather
-	const BARMOR_PROTECTION	65%
+	const BARMOR_PROTECTION	55%
 	const BARMOR_PROTECTION_AREA	chest
 	const BARMOR_REPLACE_BODYPARTS chest
 
 	const ELM_NAME "firel"
 	const ELM_TYPE "fire"
 	const ELM_AMT 75
+
+	const ARMOR_STR_REQ 15
 
 	const NEW_ARMOR_OFS 8
 }
@@ -21,10 +23,10 @@
 
 	name 	"a|Fire Lizard Skin"
 	desc 	"This armor is carved from the hide of a Fire Lizard."
-	weight 	35
+	weight 	40
 	size 	30
 	wearable 1 chest|arms
-	value 250
+	value 850
 
 	sethudsprite trade 157
 }
