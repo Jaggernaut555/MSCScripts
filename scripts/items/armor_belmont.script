@@ -14,7 +14,7 @@
 
 	const BER_ACTIVATE_WHILE_WORN 1
 
-	//const ARMOR_STR_REQ 25
+	const ARMOR_STR_REQ 25
 
 	const NEW_ARMOR_OFS 10
 }
