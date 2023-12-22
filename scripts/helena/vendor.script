@@ -78,15 +78,15 @@ f//Random merchant
 { store_equip
 
 	if STORE_TYPE equals 2
-	//	        |Store name|	|Item name|              |Quantity|		|cost%|			|Sell Ratio|	
-	addstoreitem	STORE_NAME	item_torch		$rand(3,8)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	item_log		$rand(1,4)		OVERCHARGE		SELL_RATIO
+	//	        |Store name|	|Item name|         |Quantity|		|cost%|			|Sell Ratio|	
+	addstoreitem	STORE_NAME	item_torch			$rand(3,8)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	item_log			$rand(1,4)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	health_mpotion		$rand(1,3)		OVERCHARGE		0.1
 	addstoreitem	STORE_NAME	pack_bigsack	 	$rand(1,3)		OVERCHARGE		SELL_RATIO
-	//addstoreitem	STORE_NAME	pack_sack		$rand(1,3)		OVERCHARGE		SELL_RATIO
+	//addstoreitem	STORE_NAME	pack_sack			$rand(1,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	pack_heavybackpack	$rand(1,3)		OVERCHARGE		SELL_RATIO
-//	addstoreitem	STORE_NAME	sheath_belt		$rand(1,3)		OVERCHARGE		SELL_RATIO
-//	addstoreitem	STORE_NAME	sheath_back		$rand(0,3)		OVERCHARGE		SELL_RATIO
+//	addstoreitem	STORE_NAME	sheath_belt			$rand(1,3)		OVERCHARGE		SELL_RATIO
+//	addstoreitem	STORE_NAME	sheath_back			$rand(0,3)		OVERCHARGE		SELL_RATIO
 //	addstoreitem	STORE_NAME	sheath_belt_holster	$rand(1,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	sheath_back_holster	$rand(0,3)		OVERCHARGE		SELL_RATIO
 //	addstoreitem	STORE_NAME	sheath_dagger		$rand(0,3)		OVERCHARGE		SELL_RATIO
@@ -112,29 +112,41 @@ f//Random merchant
 { store_armor
 
 	if STORE_TYPE equals 3
-	//	        |Store name|	|Item name|		|Quantity|		|cost%|			|Sell Ratio|	
-	addstoreitem	STORE_NAME	shields_buckler		$rand(1,5)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_helm_knight	$rand(0,2)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_helm_mongol	$rand(0,2)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_helm_plate	$rand(1,2)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_knight	 	$rand(0,2)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_leather_studded	$rand(1,3)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_mongol		$rand(0,2)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_plate		$rand(1,2)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	shields_ironshield	$rand(1,3)		OVERCHARGE		0.25
-	addstoreitem	STORE_NAME	shields_lironshield	$rand(0,3)		OVERCHARGE		SELL_RATIO
+	//			|Store name|	|Item name|			|Quantity|		|cost%|		|Sell Ratio|	
+
+
+
+	addstoreitem  STORE_NAME	armor_leather_torn 	$rand(1,3)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	armor_leather		$rand(1,2)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	armor_leather_studded	$rand(0,2)	OVERCHARGE	SELL_RATIO
+
+	addstoreitem  STORE_NAME	armor_mongol   	 	$rand(1,2)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	armor_plate   	 	$rand(0,1)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	armor_knight   	 	0			OVERCHARGE	SELL_RATIO
+
+	addstoreitem  STORE_NAME	armor_helm_bronze 	$rand(1,3)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	armor_helm_plate	$rand(1,2)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	armor_helm_mongol	$rand(0,2)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	armor_helm_knight	0			OVERCHARGE	SELL_RATIO
+
+	addstoreitem  STORE_NAME	shields_wooden		$rand(1,3)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	shields_woodenr		$rand(1,3)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	shields_woodenorc	0			OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	shields_buckler  	$rand(0,2)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	shields_ironshield	$rand(0,1)	OVERCHARGE	SELL_RATIO
+	addstoreitem  STORE_NAME	shields_lironshield	0			OVERCHARGE	SELL_RATIO
+
 
 	// Items to buy
-	addstoreitem	STORE_NAME	skin_bear		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	skin_boar		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	skin_boar_heavy		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	skin_ratpelt		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_dark		0			200			1
+	addstoreitem	STORE_NAME	skin_bear			0			OVERCHARGE	SELL_RATIO
+	addstoreitem	STORE_NAME	skin_boar			0			OVERCHARGE	SELL_RATIO
+	addstoreitem	STORE_NAME	skin_boar_heavy		0			OVERCHARGE	SELL_RATIO
+	addstoreitem	STORE_NAME	skin_ratpelt		0			OVERCHARGE	SELL_RATIO
+
+	addstoreitem	STORE_NAME	armor_dark			0			200			1
 	addstoreitem	STORE_NAME	armor_golden		0			200			1
 	addstoreitem	STORE_NAME	armor_helm_dark		0			200			1
 	addstoreitem	STORE_NAME	armor_helm_golden	0			200			1
-	addstoreitem	STORE_NAME	armor_leather		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	armor_leather_torn	0			OVERCHARGE		SELL_RATIO
 
 	setvard VEND_NEWBIE 0
 	setvard VEND_WEAPONS 0
@@ -146,32 +158,36 @@ f//Random merchant
 
 	if STORE_TYPE equals 4
    	setvard SELL_WEAPON_LEVEL 3,6,9,12
-	//		|Store name|	|Item name|		|Quantity|		|cost%|			|Sell Ratio|	
+	//		|Store name|	|Item name|				|Quantity|		|cost%|			|Sell Ratio|	
 	addstoreitem	STORE_NAME	smallarms_knife		$rand(0,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	smallarms_dagger	$rand(0,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	swords_shortsword	$rand(0,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	swords_scimitar 	$rand(0,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	axes_smallaxe		$rand(0,3)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	axes_axe		$rand(0,3)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	axes_2haxe		$rand(0,3)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	axes_axe			$rand(0,3)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	axes_2haxe			$rand(0,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	blunt_hammer2		$rand(0,3)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	blunt_mace		$rand(0,3)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	blunt_maul		$rand(0,3)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	blunt_gauntlets_leather		$rand(0,1)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	blunt_mace			$rand(0,3)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	blunt_maul			$rand(0,3)		OVERCHARGE		SELL_RATIO
 
-	addstoreitem  STORE_NAME     polearms_qs	$rand(0,3)  	OVERCHARGE	SELL_RATIO
-	addstoreitem  STORE_NAME     polearms_sp	$rand(0,2)  	OVERCHARGE	SELL_RATIO
+	addstoreitem	STORE_NAME	blunt_gauntlets_leather	3			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	gauntlets_normal		$rand(1,2)	OVERCHARGE		SELL_RATIO
+
+	addstoreitem	STORE_NAME	polearms_qs			3			  	OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	polearms_sp			$rand(1,3)  	OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	polearms_ba			$rand(1,2)  	OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	polearms_hal		$rand(0,2)  	OVERCHARGE		SELL_RATIO
 
 	// Items to buy
-	addstoreitem	STORE_NAME	blunt_greatmaul		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_katana		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_katana2		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_katana3		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_katana4		0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_skullblade	0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_skullblade2	0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_skullblade3	0			OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	swords_skullblade4	0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	blunt_greatmaul			0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_katana			0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_katana2			0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_katana3			0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_katana4			0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_skullblade		0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_skullblade2		0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_skullblade3		0			OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	swords_skullblade4		0			OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	smallarms_fangstooth	0			OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	smallarms_huggerdagger	0			OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	smallarms_huggerdagger2	0			OVERCHARGE		SELL_RATIO
@@ -216,14 +232,14 @@ f//Random merchant
 
 	if STORE_TYPE equals 5
 	setvard MAGIC_SHOP 1
-	//	        |Store name|	|Item name|		|Quantity|		|cost%|			|Sell Ratio|	
+	//	        |Store name|	|Item name|			|Quantity|		|cost%|			|Sell Ratio|	
 	addstoreitem	STORE_NAME	scroll_fire_dart	$rand(1,4)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll_lightning_weak	$rand(1,4)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	scroll_glow		$rand(1,5)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	scroll_glow			$rand(1,5)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll2_fire_dart	$rand(1,2)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll2_lightning_weak	$rand(0,1)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll2_glow		$rand(1,2)		OVERCHARGE		SELL_RATIO
-	addstoreitem	STORE_NAME	item_log		$rand(1,4)		OVERCHARGE		SELL_RATIO
+	addstoreitem	STORE_NAME	item_log			$rand(1,4)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll_ice_shield	$rand(0,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll_summon_rat	$rand(0,3)		OVERCHARGE		SELL_RATIO
 	addstoreitem	STORE_NAME	scroll2_summon_rat	$rand(0,1)		OVERCHARGE			0.1

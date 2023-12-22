@@ -805,6 +805,8 @@ crest_sor
 //AJ DEC2023
 shields_woodenr
 shields_woodenorc
+bows_composite
+bows_longbowe
 
 //do not edit below this line
 

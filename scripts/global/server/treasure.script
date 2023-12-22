@@ -4,16 +4,16 @@
 //======== Treasure Arrays [begin]
 
 	//NEWB
-	setvarg G_NOOB_ITEMS1 "smallarms_royaldagger;smallarms_stiletto;blunt_maul;blunt_mace;blunt_hammer1;blunt_hammer2;bows_treebow;bows_orcbow;smallarms_rknife;smallarms_knife;smallarms_dagger;bows_shortbow;shields_buckler;health_apple;"
+	setvarg G_NOOB_ITEMS1 "smallarms_royaldagger;smallarms_stiletto;blunt_maul;blunt_mace;blunt_hammer1;blunt_hammer2;bows_treebow;bows_orcbow;smallarms_rknife;smallarms_knife;smallarms_dagger;bows_shortbow;health_apple;"
 	setvarg G_NOOB_ITEMS2 "skin_boar;skin_boar_heavy;skin_ratpelt;skin_bear;drink_ale;drink_mead;swords_katana;drink_wine;blunt_warhammer;swords_rsword;swords_shortsword;smallarms_dirk;swords_longsword;swords_scimitar;"
 	setvarg G_NOOB_ITEMS3 "swords_bastardsword;item_galat_note_10;axes_rsmallaxe;axes_smallaxe;axes_axe;axes_battleaxe;axes_greataxe;axes_scythe;axes_2haxe;gold_pouch_5;gold_pouch_10;gold_pouch_25;sheath_holster_snakeskin;"
 	setvarg G_NOOB_ITEMS4 "sheath_belt_holster_snakeskin;blunt_gauntlets_leather;sheath_dagger_snakeskin;sheath_belt_snakeskin;sheath_belt_holster_snakeskin;sheath_axe_snakeskin;sheath_blunt_snakeskin;sheath_dagger;sheath_back;sheath_belt;"
 	setvarg G_NOOB_ITEMS5 "sheath_belt_holster;sheath_back_holster;sheath_belt_snakeskin;pack_bigsack;pack_xbowquiver;pack_quiver;armor_leather;armor_leather_torn;scroll_glow;swords_skullblade2;smallarms_craftedknife2;"
-	setvarg G_NOOB_ITEMS6 "polearms_qs;polearms_sp;"
+	setvarg G_NOOB_ITEMS6 "polearms_qs;polearms_sp;shields_wooden;shields_woodenr;shields_woodenorc;bows_composite"
 	setvarg G_NOOB_SETS 6 //you can add up to G_NOOB_ITEMS9 without changing any scripts, but change this number accordingly
 
 	//GOOD
-	setvarg G_GOOD_ITEMS1 "smallarms_huggerdagger2;smallarms_craftedknife;swords_katana2;swords_skullblade;swords_skullblade3;scroll_fire_dart;scroll_lightning_weak;armor_leather_studded;shields_ironshield;pack_archersquiver;"
+	setvarg G_GOOD_ITEMS1 "smallarms_huggerdagger2;smallarms_craftedknife;swords_katana2;swords_skullblade;swords_skullblade3;scroll_fire_dart;scroll_lightning_weak;armor_leather_studded;shields_buckler;shields_ironshield;pack_archersquiver;"
 	setvarg G_GOOD_ITEMS2 "item_crystal_return;swords_nkatana;armor_helm_bronze;gold_pouch_50;gold_pouch_100;item_light_crystal;scroll2_lightning_weak;bows_longbow;scroll2_glow;scroll_poison;sheath_spellbook;"
 	setvarg G_GOOD_ITEMS3 "sheath_back_snakeskin;blunt_greatmaul;pack_heavybackpack;armor_helm_plate;armor_helm_mongol;armor_plate;armor_mongol;polearms_ba;mana_lleadfoot;"
 	setvarg G_GOOD_SETS 3
@@ -21,7 +21,7 @@
 	//GREAT
 	setvarg G_GREAT_ITEMS1 "smallarms_huggerdagger;swords_katana3;bows_swiftbow;smallarms_craftedknife3;swords_skullblade4;scroll_summon_undead;armor_knight;armor_helm_knight;shields_lironshield;blunt_gauntlets;scroll2_rejuvenate;blunt_hammer3;"
 	setvarg G_GREAT_ITEMS2 "item_crystal_reloc;scroll2_fire_dart;scroll2_frost_xolt;scroll2_poison;armor_fireliz;armor_salamander;gold_pouch_200;scroll2_summon_rat;mana_leadfoot;mana_prot_spiders;swords_liceblade;swords_poison1;scroll_summon_rat;"
-	setvarg G_GREAT_ITEMS3 "armor_leather_gaz1;scroll2_summon_undead;axes_poison1;scroll_fire_ball;polearms_hal;mana_lleadfoot;"
+	setvarg G_GREAT_ITEMS3 "armor_leather_gaz1;scroll2_summon_undead;axes_poison1;scroll_fire_ball;polearms_hal;mana_lleadfoot;bows_longbowe;"
 	setvarg G_GREAT_SETS 3
 
 	//Arrows

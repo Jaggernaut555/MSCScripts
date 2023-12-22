@@ -108,7 +108,7 @@
 
 	//vendors snap to
 	//re-open store at reduced prices
-	setvard OVERCHARGE 50
+	setvard OVERCHARGE 75
 	setvard SELL_RATIO 1.0	
 	setvard STORE_CLOSED 0
 	setvard HELENA_SAVED 1

@@ -88,25 +88,30 @@
 { vendor_addstoreitems
 
 	//           |Store name|   |Item name|	       		|Quantity|	|Cost| |Sell ratio|
-	addstoreitem  STORE_NAME     armor_leather_torn 	$rand(2,4)	100		SELL_RATIO
-	addstoreitem  STORE_NAME     armor_leather			$rand(1,2)	125		SELL_RATIO
-	addstoreitem  STORE_NAME     armor_leather_studded	0			150		SELL_RATIO
-	addstoreitem  STORE_NAME     armor_plate   	 		0			150		SELL_RATIO
+
+	addstoreitem  STORE_NAME     gown_edana				10			100		SELL_RATIO
 
 	addstoreitem  STORE_NAME     armor_helm_bronze 		$rand(2,4)	100		SELL_RATIO
 	addstoreitem  STORE_NAME     armor_helm_plate 		$rand(1,2)	125		SELL_RATIO
+	addstoreitem  STORE_NAME     armor_helm_mongol 		0			150		SELL_RATIO
+	addstoreitem  STORE_NAME     armor_helm_knight		0			150		SELL_RATIO
+
+	addstoreitem  STORE_NAME     armor_leather_torn 	$rand(2,4)	100		SELL_RATIO
+	addstoreitem  STORE_NAME     armor_leather			$rand(1,2)	125		SELL_RATIO
+	addstoreitem  STORE_NAME     armor_leather_studded	0			150		SELL_RATIO
+	addstoreitem  STORE_NAME     armor_mongol  	 		0			150		SELL_RATIO
+	addstoreitem  STORE_NAME     armor_plate   	 		0			150		SELL_RATIO
+
+	addstoreitem  STORE_NAME     shields_wooden  		2			100		SELL_RATIO
+	addstoreitem  STORE_NAME     shields_woodenr  		$rand(1,2)	125		SELL_RATIO
+	addstoreitem  STORE_NAME     shields_woodenorc  	0			150		SELL_RATIO
+	addstoreitem  STORE_NAME     shields_buckler	  	0			150		SELL_RATIO
+	addstoreitem  STORE_NAME     shields_ironshield  	0			150		SELL_RATIO
 
 	addstoreitem  STORE_NAME     skin_boar				0			150		0.75
 	addstoreitem  STORE_NAME     skin_ratpelt			0			250		0.75
 	addstoreitem  STORE_NAME     skin_bear				0			150		1
 	addstoreitem  STORE_NAME     skin_boar_heavy		0			150		1
-
-	addstoreitem  STORE_NAME     shields_wooden  		2			100		SELL_RATIO
-	addstoreitem  STORE_NAME     shields_woodenr  		$rand(1,2)	125		SELL_RATIO
-	addstoreitem  STORE_NAME     shields_woodenorc  	0			150		SELL_RATIO
-	addstoreitem  STORE_NAME     shields_ironshield  	0			150		SELL_RATIO
-
-	addstoreitem  STORE_NAME     gown_edana				10			100		SELL_RATIO
 }
 
 { trade_success

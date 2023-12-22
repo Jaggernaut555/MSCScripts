@@ -6,8 +6,8 @@
    	setvar STORE_TRIGGERTEXT "store trade buy sell purchase sale offer"
 	setvar STORE_NAME helena_general_store
 	setvar CANCHAT 1
-	setvard OVERCHARGE 150%
-	setvard SELL_RATIO 0.8
+	setvard	OVERCHARGE	$rand(100,150)
+	setvard	SELL_RATIO	$randf(.5,.9)
 
 	setvard ANIM_DEATH diesimple
 
@@ -55,24 +55,30 @@
 {
    eventname vendor_addstoreitems
 
-   //           |Store name|  |Item name|  		|Quantity|	|cost%|	
-   addstoreitem  STORE_NAME     proj_arrow_fire  	600		OVERCHARGE		0 60
-   addstoreitem  STORE_NAME     proj_arrow_wooden  	600 		OVERCHARGE	0 60
-   addstoreitem  STORE_NAME     proj_arrow_broadhead	300    		OVERCHARGE	0 60
-   addstoreitem  STORE_NAME     proj_arrow_silvertipped	300		OVERCHARGE	0 60
-   addstoreitem  STORE_NAME     proj_arrow_poison	300		OVERCHARGE	0 120
+   //           |Store name|  |Item name|          |Quantity|	|cost%|     |Sell Ratio|
+   addstoreitem  STORE_NAME     proj_arrow_fire          600	OVERCHARGE	0 60
+   addstoreitem  STORE_NAME     proj_arrow_wooden  	   600 	OVERCHARGE	0 60
+   addstoreitem  STORE_NAME     proj_arrow_broadhead	   300   OVERCHARGE	0 60
+   addstoreitem  STORE_NAME     proj_arrow_silvertipped  300	OVERCHARGE	0 60
+   addstoreitem  STORE_NAME     proj_arrow_poison        300	OVERCHARGE	0 120
 
-   addstoreitem  STORE_NAME     proj_bolt_wooden  	100 OVERCHARGE 0 25
-   //addstoreitem  STORE_NAME     proj_bolt_fire	600		OVERCHARGE	0 100
-   addstoreitem  STORE_NAME     proj_bolt_iron	100 OVERCHARGE 0 25
-   //addstoreitem  STORE_NAME     proj_bolt_steel	25		OVERCHARGE	0 100
-   addstoreitem  STORE_NAME     pack_quiver	   	3		OVERCHARGE	SELL_RATIO
-   //addstoreitem  STORE_NAME     pack_xbowquiver	   	3	OVERCHARGE	SELL_RATIO
-   addstoreitem  STORE_NAME     bows_orcbow	   	1		OVERCHARGE	SELL_RATIO
-   addstoreitem  STORE_NAME     bows_treebow	   	2		OVERCHARGE	SELL_RATIO
-   addstoreitem  STORE_NAME     bows_shortbow	   	1		OVERCHARGE	SELL_RATIO
-   addstoreitem  STORE_NAME     item_feather		0		OVERCHARGE		SELL_RATIO
-   addstoreitem  STORE_NAME     pack_quiver		1		OVERCHARGE	SELL_RATIO
+   addstoreitem  STORE_NAME     proj_bolt_wooden   100         OVERCHARGE  0 25
+   //addstoreitem  STORE_NAME     proj_bolt_fire   600         OVERCHARGE  0 100
+   addstoreitem  STORE_NAME     proj_bolt_iron     100         OVERCHARGE  0 25
+   //addstoreitem  STORE_NAME     proj_bolt_steel  25          OVERCHARGE  0 100
+   addstoreitem  STORE_NAME     pack_quiver        3           OVERCHARGE	SELL_RATIO
+   //addstoreitem  STORE_NAME     pack_xbowquiver  3           OVERCHARGE	SELL_RATIO
+
+   addstoreitem  STORE_NAME     bows_treebow       $rand(1,4)  OVERCHARGE  SELL_RATIO
+   addstoreitem  STORE_NAME     bows_orcbow        0           OVERCHARGE  SELL_RATIO
+   addstoreitem  STORE_NAME     bows_shortbow      $rand(1,3)  OVERCHARGE  SELL_RATIO
+   addstoreitem  STORE_NAME     bows_composite     $rand(1,2)  OVERCHARGE  SELL_RATIO
+   addstoreitem  STORE_NAME     bows_longbow       0           OVERCHARGE  SELL_RATIO
+   addstoreitem  STORE_NAME     bows_swiftbow      0           OVERCHARGE  SELL_RATIO
+   addstoreitem  STORE_NAME     bows_longbowe      0           OVERCHARGE  SELL_RATIO
+   
+   addstoreitem  STORE_NAME     item_feather       0           OVERCHARGE  SELL_RATIO
+   addstoreitem  STORE_NAME     pack_quiver        1           OVERCHARGE  SELL_RATIO
 
    
    if( $rand(1,12) == 1 )
