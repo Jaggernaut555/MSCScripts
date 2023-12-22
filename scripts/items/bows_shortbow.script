@@ -14,10 +14,10 @@
   //Used in base_ranged
   //------------------
   const RANGED_FORCE		1200
-  const RANGED_ENERGY		0.5
+  const RANGED_ENERGY		0.75
   const RANGED_ACCURACY		4;2	//Uncharged COF (high);  Charged COF (low)
   const RANGED_POSTFIRE_DELAY	0.1
-  const RANGED_PULLTIME       0.4
+  const RANGED_PULLTIME       0.5
 }
 
 #include items/bows_base

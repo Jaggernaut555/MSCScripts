@@ -13,7 +13,7 @@
   //Used in base_ranged
   //------------------
   const RANGED_FORCE		900
-  const RANGED_ENERGY		0.2
+  const RANGED_ENERGY		0.25
   const RANGED_ACCURACY		10;4	//Uncharged COF (high);  Charged COF (low)
   const RANGED_POSTFIRE_DELAY	0.3
 }
