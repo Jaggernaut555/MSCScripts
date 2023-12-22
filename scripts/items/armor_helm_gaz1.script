@@ -2,7 +2,7 @@
 	const ARMOR_MODEL      	armor/p_helmets.mdl
 	const ARMOR_BODY		7
 	//onst ARMOR_BODY_HUMAN_FEMALE 14
-	const ARMOR_TEXT		"You equip the Helm of Fire Reistance."
+	const ARMOR_TEXT		"You equip the Helm of Fire Resistance."
 	const BARMOR_TYPE		platemail
 	const BARMOR_PROTECTION	60%
 	const STUN_PROTECTION 40

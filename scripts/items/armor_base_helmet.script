@@ -24,6 +24,9 @@
 	local CL_DEBUG PARAM3
 	//dbg game_wear PARAM1 PARAM2
 	callevent game_show CL_RACE CL_GENDER CL_DEBUG
+
+	if $get(ent_owner,stat.strength) < ARMOR_STR_REQ
+	callevent 0.1 failed_str_req_loop
 }
 
 { game_show
@@ -125,4 +128,22 @@
 { ext_setrender
 	dbg got ext_setrender PARAM1
 	setrender PARAM1
+}
+
+{ failed_str_req_loop
+	if $get(ent_me,is_worn)
+	if $get(ent_owner,stat.strength) < ARMOR_STR_REQ
+	callevent 10.0 failed_str_req_loop
+	local ALRT_STR "You are too weak to move freely in this helmet. (Min Strength "
+	stradd ALRT_STR ARMOR_STR_REQ
+	stradd ALRT_STR ")"
+	infomsg ent_owner "Insufficient Strength for Helmet" ALRT_STR
+	applyeffectstack ent_owner effects/effect_slow 10.0 50% $get(ent_me,id) //effects/speed 10.0 75% 0.5
+}
+
+{ ext_activate_items
+	//dbg $currentscript ext_activate_items
+	if PARAM1 equals $get(ent_owner,id)
+	if $get(ent_owner,stat.strength) < ARMOR_STR_REQ
+	callevent 0.1 failed_str_req_loop
 }

@@ -19,7 +19,8 @@
 	const ARMOR_HUMAN_FEMALE_OFS_ADJ 20 //should represent the "blank" index inbetween male and female entries (JHLMV index -1)
 
 	//local
-	const NEW_ARMOR_MODEL armor/p_armorvest_new.mdl
+	//const NEW_ARMOR_MODEL armor/p_armorvest_new.mdl
+	const NEW_ARMOR_MODEL armor/custom_models/p_armorvest_new.mdl //Redirection to custom .mdl for all armours using NEW_ARMOR_OFS
 }
 
 #include items/base_miscitem

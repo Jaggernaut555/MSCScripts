@@ -12,7 +12,7 @@
 
 	const ELM_NAME "farmr"
 	const ELM_TYPE "fire"
-	const ELM_AMT 30
+	const ELM_AMT 35
 
 	const ARMOR_STR_REQ 30
 

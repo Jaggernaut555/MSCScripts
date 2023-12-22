@@ -1,9 +1,9 @@
 //Thothie DA fix attempt #4 - File Pipes are not String Seperators (fixed the packs at least)
 {
-	const ARMOR_MODEL armor/p_armorvest2.mdl
-	const ARMOR_GROUP 4
-	const ARMOR_BODY 0	//JHLMV index -2
-	const ARMOR_TEXT "You hear the heartbeats of thousands of fallen warriors..."
+	//const ARMOR_MODEL armor/p_armorvest2.mdl // No longer used
+	const ARMOR_GROUP 4 // Probably not used anymore
+	const ARMOR_BODY 0	//JHLMV index -2. Probably not used anymore
+	const ARMOR_TEXT "You hear the heartbeat of a thousand fallen warriors..."
 	const BARMOR_TYPE platemail
 	const BARMOR_PROTECTION	60%
 	//chest|arms|legs
@@ -14,9 +14,12 @@
 
 	const BER_ACTIVATE_WHILE_WORN 1
 
-	const ARMOR_STR_REQ 25
+	//const ARMOR_STR_REQ 25
 
-	const NEW_ARMOR_OFS 10
+	const NEW_ARMOR_OFS 10 // New model offset for p_armorvest_new.mdl
+
+	const SOUND_BLOCK           player/heartbeat_noloop.wav
+    precache SOUND_BLOCK
 }
 
 #include [server] items/base_elemental_resist
@@ -65,7 +68,7 @@
 	if ( MY_CUR_HEALTH < MY_MAX_HEALTH )
 	{
 	givehp $get(ent_owner,id) 1
-	playsound 0 10 player/heartbeat_noloop.wav
+	playsound 0 10 SOUND_BLOCK
 	}
 	callevent 1.0 healing_me
 }

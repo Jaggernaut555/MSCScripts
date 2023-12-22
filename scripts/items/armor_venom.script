@@ -11,7 +11,7 @@
 
 	const ELM_NAME "varmr"
 	const ELM_TYPE "poison"
-	const ELM_AMT 50
+	const ELM_AMT 35
 
 	const ARMOR_STR_REQ 25
 

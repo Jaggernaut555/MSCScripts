@@ -9,7 +9,7 @@
 
 	const ELM_NAME "poisl"
 	const ELM_TYPE "poison"
-	const ELM_AMT 75
+	const ELM_AMT 50
 
   const ARMOR_STR_REQ 15
 

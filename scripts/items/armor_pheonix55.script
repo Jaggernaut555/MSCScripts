@@ -11,7 +11,7 @@
 
 	const ELM_NAME "phonx"
 	const ELM_TYPE "fire"
-	const ELM_AMT 75
+	const ELM_AMT 50
 
 	const ARMOR_STR_REQ 40
 
