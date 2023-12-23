@@ -6,7 +6,7 @@
    const ATTACK_HITCHANCE 	100%
    const ATTACK_DAMAGE_LOW 	10
    const ATTACK_DAMAGE_HIGH 	13
-   setvard NPC_GIVE_EXP 		80
+   setvard NPC_GIVE_EXP 		90 //80
 
    setvard DROP_GOLD 		$rand(0,1)
    setvard DROP_GOLD_MIN		10

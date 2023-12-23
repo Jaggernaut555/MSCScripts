@@ -3,9 +3,9 @@
 {
    const SKEL_HP		120
    const ATTACK_HITCHANCE 	70%
-   const ATTACK_DAMAGE_LOW 	4
-   const ATTACK_DAMAGE_HIGH 	7
-   setvard NPC_GIVE_EXP 		40
+   const ATTACK_DAMAGE_LOW 	6 //4
+   const ATTACK_DAMAGE_HIGH 	10 //7
+   setvard NPC_GIVE_EXP 		45 //40
 
    setvard DROP_GOLD 		$rand(0,1)
    setvard DROP_GOLD_MIN		3

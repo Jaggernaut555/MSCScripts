@@ -1,6 +1,6 @@
 //Cavern Spider
 {
-	const FIN_EXP 20
+	const FIN_EXP 35 //20
 	const SPIDER_MODEL monsters/fer_spider.mdl
 }
 
