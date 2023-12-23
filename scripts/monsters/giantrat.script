@@ -51,7 +51,7 @@
    name a|Giant Rat
    roam 1
    hearingsensitivity 0
-   setvard NPC_GIVE_EXP 4
+   setvard NPC_GIVE_EXP 4 //3
    race vermin
 
    setmodel monsters/giant_rat.mdl

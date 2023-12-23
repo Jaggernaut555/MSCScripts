@@ -5,7 +5,7 @@
    const FLEE_HEALTH		10	//base_npc_attack - Health at which I run away
    const FLEE_CHANCE		25%	//base_npc_attack - Chance I run away
 
-	setvard NPC_GIVE_EXP 9
+	setvard NPC_GIVE_EXP 10 //6
    const GORE_FORWARD_DAMAGE 	1.0
    const GORE_SIDE_DAMAGE 	0.7
    const BOAR_CAN_CHARGE	0

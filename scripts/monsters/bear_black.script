@@ -6,7 +6,7 @@
 
    const ATTACK_DAMAGE '$rand(5,7)'
    const ATTACK_HITCHANCE 60%
-   const NPC_BASE_EXP	50
+   const NPC_BASE_EXP	50 //40
    const RETALIATE_CHANGETARGET_CHANCE 50% //base_npc_attack - Chance I change targets
    
    setvard DROP_ITEM1 skin_bear 	//base_monster - Item Drop #1
