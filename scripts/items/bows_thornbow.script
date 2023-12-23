@@ -21,6 +21,8 @@
 	const RANGED_DMG_DELAY		0.1
 	const RANGED_DMG_MULTI		1.5
 	const RANGED_PULLTIME		0.6
+
+	const MP_DRAIN 3
 }
 
 #include items/bows_base
@@ -34,10 +36,23 @@
    sethudsprite trade 123
 }
 
-//{ ranged_start
-//	if game.serverside
-//	local OWNER_SKILL $get(ent_owner,skill.spellcasting)
-//	if OWNER_SKILL < 3
-//	dplayermessage ent_owner You lack the skills needed to activate this bow's magic.
-//	cancelattack
-//}
+{ ranged_start
+	if game.serverside
+	local OWNER_SKILL $get(ent_owner,skill.spellcasting)
+	if ( OWNER_SKILL < 3 )
+	{
+		dplayermessage ent_owner You lack the skills needed to activate this bow's magic.
+		cancelattack
+	}
+
+	local MY_CUR_MP $get(ent_owner,mp)
+	if ( MY_CUR_MP < MP_DRAIN )
+	{
+		dplayermessage ent_owner You need more Mana to activate this bow's magic.
+		cancelattack
+	}
+	else
+	{
+		givemp ent_owner $neg(MP_DRAIN)
+	}
+}

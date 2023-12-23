@@ -9,7 +9,7 @@
 	setvarg G_NOOB_ITEMS3 "swords_bastardsword;item_galat_note_10;axes_rsmallaxe;axes_smallaxe;axes_axe;axes_battleaxe;axes_greataxe;axes_scythe;axes_2haxe;gold_pouch_5;gold_pouch_10;gold_pouch_25;sheath_holster_snakeskin;"
 	setvarg G_NOOB_ITEMS4 "sheath_belt_holster_snakeskin;blunt_gauntlets_leather;sheath_dagger_snakeskin;sheath_belt_snakeskin;sheath_belt_holster_snakeskin;sheath_axe_snakeskin;sheath_blunt_snakeskin;sheath_dagger;sheath_back;sheath_belt;"
 	setvarg G_NOOB_ITEMS5 "sheath_belt_holster;sheath_back_holster;sheath_belt_snakeskin;pack_bigsack;pack_xbowquiver;pack_quiver;armor_leather;armor_leather_torn;scroll_glow;swords_skullblade2;smallarms_craftedknife2;"
-	setvarg G_NOOB_ITEMS6 "polearms_qs;polearms_sp;shields_wooden;shields_woodenr;shields_woodenorc;bows_composite"
+	setvarg G_NOOB_ITEMS6 "polearms_qs;polearms_sp;shields_wooden;shields_woodenr;shields_woodenorc;bows_composite;"
 	setvarg G_NOOB_SETS 6 //you can add up to G_NOOB_ITEMS9 without changing any scripts, but change this number accordingly
 
 	//GOOD
