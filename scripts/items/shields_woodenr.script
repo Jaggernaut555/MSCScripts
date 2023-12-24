@@ -5,7 +5,10 @@
     const MODEL_VIEW_IDX        2
     //const MODEL_VIEW          viewmodels/v_shields.mdl
     //const MODEL_VIEW_IDX      1
-    const MODEL_BODY_OFS        61
+    const MODEL_BODY_OFS        4 //61
+    const MODEL_WORLD weapons/custom_models/shields_custom.mdl
+    const MODEL_HANDS weapons/custom_models/shields_custom.mdl
+    const MODEL_WEAR weapons/custom_models/shields_custom.mdl
 
     const NOPUSH_CHANCE         15%
     const PARRY_MULTI           1.3
