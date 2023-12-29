@@ -29,4 +29,4 @@ cd ../
 echo ====================== Compiling...
 scriptpack.exe -refv
 echo Done.
-pause
+::pause
