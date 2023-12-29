@@ -813,6 +813,12 @@ magic_hand_acid_touch
 scroll2_acid_touch
 scroll2_acid_touch
 
+//HOLY BOLT
+scroll_holy_bolt
+scroll2_holy_bolt
+proj_holy_bolt
+magic_hand_holy_bolt
+
 //do not edit below this line
 
 //File must have a carriage return at the end

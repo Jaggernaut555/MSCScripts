@@ -1,0 +1,45 @@
+// Divination spell
+// level 1, very weak damage, slow projectile, 2 mana cost
+// mostly copied off of frost bolt to use that spell's projectile/sounds
+
+{
+  const SOUND_CHARGE      	magic/lightprep.wav
+  const SOUND_SHOOT      	magic/ice_strike.wav
+
+  const RANGED_FORCE		400
+  const RANGED_COF 		1	//uncharged spread; charged spread  (all in degrees)
+  const RANGED_ATK_DURATION 	1
+  const RANGED_PROJECTILE 	proj_holy_bolt
+  const RANGED_DMG_DELAY	0.25
+
+  setvar SPELL_SKILL_REQUIRED	1
+  const SPELL_FIZZLE_TIME	30
+  const SPELL_CAST_SUCCESS	95%
+  const SPELL_PREPARE_TIME	1
+  const SPELL_DAMAGE_TYPE	holy
+  const SPELL_ENERGYDRAIN	10
+  const SPELL_MPDRAIN		2
+  const SPELL_STAT		spellcasting.divination
+  
+  precachefile 			items/magic_hand_base
+}
+
+#include items/magic_hand_base
+
+{  spell_spawn
+
+   name 		Holy Bolt
+   desc 		Holy Bolt - Fires a bolt that damages the undead
+   precache SOUND_SHOOT1
+   precache SOUND_SHOOT2
+}
+
+{  spell_casted	//PARAM1: "none"/"npc"/"world"   2: Attack end Position   3: Entity hit (if any)
+
+	svplaysound game.sound.item game.sound.maxvol SOUND_SHOOT
+}
+
+{ fake_precache
+	svplaysound 0 0 SOUND_CHARGE
+	svplaysound 0 0 SOUND_SHOOT
+}
