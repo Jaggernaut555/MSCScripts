@@ -45,6 +45,10 @@
 	const PLAYERANIM_PREPARE	prepare_fireball
 	const PLAYERANIM_CAST		throw_fireball
 
+	const CONCENTRATION_STAT $get(ent_owner,stat.concentration)
+	const CONCENTRATION_RESIST_RATIO 1
+	const CONCENTRATION_RESIST_MAX_DAMAGE_TAKEN $math(multiply,$get(ent_owner,maxhp),0.25)
+
 	const SCRIPT_SFX_PREP		items/magic_hand_base_cl
 	precachefile			SCRIPT_SFX_PREP
 }
@@ -237,5 +241,50 @@
 { set_idle
 	if ( !IS_CASTING ) {
 		callevent bitem_set_can_idle
+	}
+}
+
+{ game_takedamage
+	// All spells can be interrupted
+	// If a hit does 25% damage = 100% chance to interrupt
+	// 1d100 vs ratio(0,25% of hp)
+	// if interrupted
+	// 1d100 vs concentration
+	// CONCENTRATION_RESIST_RATIO multiplies to both to increase or decrease chance to be interrupted
+	local DAMAGE_TAKEN PARAM3
+
+	local DAMAGE_RATIO $math(divide,DAMAGE_TAKEN,CONCENTRATION_RESIST_MAX_DAMAGE_TAKEN)
+	capvar DAMAGE_RATIO 0 1
+	local SPELL_INTERRUPT_CHANCE $ratio(DAMAGE_RATIO,101,1)
+
+	multiply SPELL_INTERRUPT_CHANCE CONCENTRATION_RESIST_RATIO
+
+	local SPELL_INTERRUPT_ROLL $rand(1,100)
+
+	if ( SPELL_INTERRUPT_ROLL < SPELL_INTERRUPT_CHANCE )
+	{
+		local EXIT_SUB 1
+	}
+	if !EXIT_SUB
+
+	local RESIST_ROLL $rand(1,100)
+	local RESIST_CHANCE $math(multiply,CONCENTRATION_STAT,CONCENTRATION_RESIST_RATIO)
+
+	// There must be a better way to build strings
+	local ROLL_STRING "("
+	stradd ROLL_STRING RESIST_ROLL
+	stradd ROLL_STRING "/"
+	stradd ROLL_STRING $int(RESIST_CHANCE)
+	stradd ROLL_STRING ")"
+
+	if ( RESIST_ROLL > RESIST_CHANCE )
+	{
+		playermessage Your concentration has been broken! ROLL_STRING
+
+		callevent spell_end
+	}
+	else
+	{
+		dplayermessage ent_owner Your concentration holds. ROLL_STRING
 	}
 }
