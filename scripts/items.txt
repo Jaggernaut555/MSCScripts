@@ -808,6 +808,11 @@ shields_woodenorc
 bows_composite
 bows_longbowe
 
+// ACID TOUCH
+magic_hand_acid_touch
+scroll2_acid_touch
+scroll2_acid_touch
+
 //do not edit below this line
 
 //File must have a carriage return at the end
