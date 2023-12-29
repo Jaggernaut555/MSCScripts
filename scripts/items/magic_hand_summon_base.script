@@ -4,6 +4,8 @@
 
   const SOUND_SHOOT      	magic/cast.wav
 
+	const ANIM_CAST 16
+
   const MELEE_RANGE		200
   const MELEE_HITCHANCE 	100%
   const MELEE_ATK_DURATION 	1
@@ -34,24 +36,6 @@
 
    name 		SPELL_NAME
    desc 		SPELL_NAME
-}
-
-{ cast_start
-
-	setvard baseitem.canidle 0
-	callevent start_spell_anim
-}
-
-{ [override] cast_toss	//If ranged
-	
-	callevent	spell_casted
-	playowneranim	critical PLAYERANIM_CAST squatwalk1
-}
-
-{ start_spell_anim
-
-	callevent 1.1 bitem_set_can_idle
-	playviewanim 16
 }
 
 { summon_check //<origin>

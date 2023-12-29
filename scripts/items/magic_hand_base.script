@@ -14,7 +14,8 @@
 	const ANIM_PREPARE		9 //2
 	const ANIM_PREPARE_FAIL	10 //3
 	const ANIM_PREPARE_IDLE   11 //4
-	const ANIM_CAST			12 //5
+	const ANIM_CAST 12 //5
+	//const ANIM_WINDUP 11 // ranged attacks can use a windup animation then cast for when the projectile is fired
 	const ANIM_IDLE1        	ANIM_PREPARE_IDLE
 	const ANIM_IDLE_TOTAL		1
 	const ANIM_IDLE_DELAY_LOW	0
@@ -52,16 +53,18 @@
 
 { game_spawn
 
-   weight 		0
-   size 		0
-   setanimext		PLAYERANIM_AIM
-   sethand		both
-   sethudsprite 	hand bow
-   sethudsprite 	trade firemagic
+	weight 		0
+	size 		0
+	setanimext		PLAYERANIM_AIM
+	sethand		both
+	sethudsprite 	hand bow
+	sethudsprite 	trade firemagic
 
-   callevent spell_spawn
-   callevent setup_attack
-   callevent setup_spell
+	callevent spell_spawn
+	callevent setup_attack
+	callevent setup_spell
+
+	setvard IS_CASTING 0
 }
 
 { game_deploy
@@ -189,14 +192,17 @@
 
 //---------------------------
 { cast_start
+	setvard IS_CASTING 1
+	setvard baseitem.canidle 0
 
-	if ( ANIM_CAST isnot 'ANIM_CAST' ) playviewanim ANIM_CAST
+	if ( ANIM_WINDUP isnot 'ANIM_WINDUP' ) playviewanim ANIM_WINDUP
+	else playviewanim ANIM_CAST
+
 	playowneranim critical PLAYERANIM_PREPARE squatwalk1
 	svplaysound	game.sound.item game.sound.maxvol SOUND_CHARGE
 }
 
 { cast_strike	//If melee
-
 	callevent spell_casted PARAM1 PARAM2 PARAM3
 }
 
@@ -204,11 +210,13 @@
 	
 	callevent spell_casted
 	playowneranim critical PLAYERANIM_CAST squatwalk1
-	//if ( ANIM_CAST isnot 'ANIM_CAST' ) playviewanim ANIM_CAST //TODO: Should be replaced with a var for casting.
+
+	playviewanim ANIM_CAST
 }
 
 { cast_end
-
+	setvard IS_CASTING 0
+	callevent 2.5 set_idle
 	//playviewanim	ANIM_IDLE1
 }
 
@@ -222,4 +230,12 @@
 
 { spell_casted
 	callexternal ent_owner mana_drain
+}
+
+// After all casting animations are done we can return to idling
+// using IS_CASTING to not return to idle animation if immediately recasting
+{ set_idle
+	if ( !IS_CASTING ) {
+		callevent bitem_set_can_idle
+	}
 }

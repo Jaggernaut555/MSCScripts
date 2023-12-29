@@ -3,6 +3,7 @@
 //- Seems more appropriate as fire than summon?
 //- XP for this goes to null proficiency still :\
 {
+	const ANIM_CAST 16
 	const SOUND_SHOOT      	magic/cast.wav
 
 	const MELEE_RANGE		600
@@ -55,27 +56,4 @@
 	local pos $vec(x,y,temp)
 
 	createnpc EFFECT_SCRIPT pos $get(ent_owner,id) EFFECT_DMG EFFECT_DURATION spellcasting.fire
-}
-
-{ cast_start
-
-	setvard baseitem.canidle 0
-	callevent start_spell_anim
-}
-
-{ [override] cast_toss	//If ranged
-	
-	callevent	spell_casted
-	playowneranim	critical PLAYERANIM_CAST squatwalk1
-}
-
-{ start_spell_anim
-
-	callevent 1 bitem_set_can_idle
-	playviewanim 16
-}
-
-{ bitem_set_can_idle
-
-	deleteme
 }
