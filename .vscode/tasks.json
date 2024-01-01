@@ -1,16 +1,25 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "pack dll",
-      "type": "process",
-      "command": "./pack_dev.bat",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    }
-  ]
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "pack dll",
+			"type": "process",
+			"command": "./scriptpack.exe",
+			"args": ["-vef"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "pack w/ time update",
+			"type": "process",
+			"command": "./pack_dev.bat",
+			"group": {
+				"kind": "build",
+			}
+		}
+	]
 }
